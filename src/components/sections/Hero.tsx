@@ -115,8 +115,11 @@ export function Hero() {
       aria-labelledby="hero-title"
       className="field-royal relative isolate flex min-h-svh flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28"
     >
-      {/* The 2024 hall, sunk deep into the blue so it reads as atmosphere
-          rather than as a photograph competing with the type. */}
+      {/* The 2024 hall, legible as a real photograph rather than a texture.
+          The scrim is deliberately shaped rather than flat: the edges stay
+          deep so the gold frame reads, while the centre — where the headline
+          and CTAs sit — gets its own soft navy pool for contrast. A flat wash
+          dark enough for the type would have dimmed the whole photo again. */}
       <div
         ref={photoRef}
         aria-hidden="true"
@@ -129,10 +132,22 @@ export function Hero() {
           sizes="100vw"
           loading="eager"
           fetchPriority="high"
-          className="scale-110 object-cover opacity-[0.18] mix-blend-luminosity"
+          className="scale-105 object-cover opacity-70 saturate-[0.85]"
         />
+        {/* Colour-grades the hall into the blue palette without hiding it. */}
+        <div className="absolute inset-0 bg-royal/35 mix-blend-color" />
+        {/* Edge falloff. */}
         <div className="field-vignette absolute inset-0" />
-        <div className="absolute inset-0 bg-navy/45" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(58% 52% at 50% 46%, rgba(1,20,60,0.82) 0%, rgba(1,20,60,0.55) 45%, rgba(1,20,60,0.12) 78%, rgba(1,20,60,0) 100%)",
+          }}
+        />
+        {/* Keeps the navbar and the bottom edge readable. */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-navy/85 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-navy/80 to-transparent" />
       </div>
 
       <DustCanvas />
