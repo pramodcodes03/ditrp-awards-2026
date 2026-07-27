@@ -43,7 +43,7 @@ export function FinalCta() {
         </div>
 
         <p data-reveal="" className="type-eyebrow mt-6 text-gold-light/90">
-          One night only
+          One day only
         </p>
 
         <div className="mt-5 flex w-full items-center justify-center gap-4 sm:gap-7">

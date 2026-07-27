@@ -21,10 +21,10 @@ export const EVENT = {
   /** Printed on every card. */
   cin: "U74999MH2018OPC303654",
 
-  /** {{SHOW_START_TIME}} — the cards give the date, not the hour. */
-  startISO: "2026-09-27T18:00:00+05:30",
+  /** Show starts 11:00 AM IST (the 2024 cards ran a 10 AM start). */
+  startISO: "2026-09-27T11:00:00+05:30",
   /** {{SHOW_END_TIME}} */
-  endISO: "2026-09-27T23:00:00+05:30",
+  endISO: "2026-09-27T16:00:00+05:30",
 
   dateLabel: "Sunday, 27 September 2026",
   dateShort: "27 September 2026",
@@ -59,10 +59,10 @@ export const DIRECTIONS_URL = "#venue";
 
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
+  { label: "Teaser", href: "#teaser" },
   { label: "Nominees", href: "#nominees" },
   { label: "Awards", href: "#categories" },
-  { label: "2024", href: "#gallery" },
-  { label: "Agenda", href: "#agenda" },
+  { label: "Editions", href: "#editions" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
@@ -131,7 +131,22 @@ export const NOMINEES: readonly Nominee[] = [
 ] as const;
 
 /* ------------------------------------------------------------------
-   The two honours presented on the night.
+   Teaser film
+   ------------------------------------------------------------------
+   87MB H.264, so it is loaded on click (façade pattern), never on page
+   load — a visitor who does not watch never downloads it.
+   ------------------------------------------------------------------ */
+
+export const TEASER = {
+  src: "/ditrp-teaser-2026.mp4",
+  poster: "/awards/teaser-poster.jpg",
+  /** Runtime is ~1:45. */
+  duration: "1:45",
+  type: "video/mp4",
+} as const;
+
+/* ------------------------------------------------------------------
+   The two honours presented on the day.
    ------------------------------------------------------------------ */
 
 export type Award = {
@@ -165,83 +180,163 @@ export const AWARDS: readonly Award[] = [
 ] as const;
 
 /* ------------------------------------------------------------------
-   2024 edition — real photography from the previous show.
+   Editions — the show across the years.
+   ------------------------------------------------------------------
+   2023 photos not supplied yet: the edition renders as a marked
+   placeholder and its photos slot in when {{2023 PHOTOS}} arrive.
    ------------------------------------------------------------------ */
 
-export const GALLERY_2024 = [
+export type GalleryPhoto = {
+  src: string;
+  alt: string;
+  caption: string;
+  w: number;
+  h: number;
+};
+
+export type Edition = {
+  year: string;
+  /** Headline label for the milestone. */
+  label: string;
+  /** One line of context. */
+  blurb: string;
+  status: "past" | "next";
+  /** Empty until photos for that year are supplied. */
+  photos: readonly GalleryPhoto[];
+};
+
+const GALLERY_2024: readonly GalleryPhoto[] = [
   {
-    src: "/awards/2024/winners-group.jpg",
-    alt: "Winners of the Excellence in Education Awards 2024 on stage with their star trophies",
-    caption: "Excellence in Education Awards 2024",
-    w: 1600,
-    h: 1066,
-  },
-  {
-    src: "/awards/2024/hall-group.jpg",
-    alt: "A full hall of DITRP institute heads holding their 2024 certificates and trophies",
-    caption: "Bihar Excellence in Education Awards 2024",
+    src: "/awards/2024/trophies.jpg",
+    alt: "Rows of gold star trophies for the Bihar Excellence in Education Awards 2024",
+    caption: "The trophies, before the show",
     w: 1600,
     h: 1068,
   },
   {
-    src: "/awards/2024/ibi-stage.jpg",
-    alt: "The India's Best 100 Institute Award Show 2024 group photograph on stage",
-    caption: "India's Best 100 Institute Award Show 2024",
-    w: 1200,
-    h: 539,
+    src: "/awards/2024/winners-group.jpg",
+    alt: "The full group of 2024 winners on stage holding certificates and trophies",
+    caption: "The winners of 2024",
+    w: 1800,
+    h: 1202,
   },
   {
-    src: "/awards/2024/ashneer-grover.jpg",
-    alt: "Ashneer Grover presenting a DITRP award to an institute head at the 2024 show",
-    caption: "Ashneer Grover presenting · 2024",
-    w: 1536,
-    h: 1024,
+    src: "/awards/2024/star-award.jpg",
+    alt: "A DITRP institute head receiving a gold star trophy on stage in 2024",
+    caption: "On stage",
+    w: 1400,
+    h: 935,
   },
   {
-    src: "/awards/2024/winners-standee.jpg",
-    alt: "Winners on stage between India's Best 100 Institute Award Show 2024 banners",
-    caption: "The 2024 winners on stage",
-    w: 1000,
-    h: 668,
+    src: "/awards/2024/presentation-red.jpg",
+    alt: "An award being presented at India's Best 100 Institute Award Show 2024",
+    caption: "India's Best 100 · 2024",
+    w: 1400,
+    h: 935,
+  },
+  {
+    src: "/awards/2024/stage.jpg",
+    alt: "The Bihar Excellence in Education Awards 2024 stage and LED backdrop",
+    caption: "The stage",
+    w: 1600,
+    h: 1068,
+  },
+  {
+    src: "/awards/2024/star-award-2.jpg",
+    alt: "A winning institute director receiving a star trophy in 2024",
+    caption: "A winner, 2024",
+    w: 1400,
+    h: 935,
   },
 ] as const;
 
-/** Past chief guest, from the 2024 photography. */
-export const PAST_GUEST = {
+export const EDITIONS: readonly Edition[] = [
+  {
+    year: "2023",
+    label: "Where it began",
+    blurb: "The first editions that built the network's biggest day.",
+    status: "past",
+    photos: [], // {{2023 PHOTOS}}
+  },
+  {
+    year: "2024",
+    label: "The day that scaled it",
+    blurb:
+      "India's Best 100 and the Bihar Excellence in Education Awards — a full hall, a hundred trophies, Ashneer Grover on stage.",
+    status: "past",
+    photos: GALLERY_2024,
+  },
+  {
+    year: "2026",
+    label: "The next stage",
+    blurb: "Mumbai, 27 September. The biggest edition yet — and you can be in the room.",
+    status: "next",
+    photos: [],
+  },
+] as const;
+
+/* ------------------------------------------------------------------
+   Guests of honour.
+   ------------------------------------------------------------------ */
+
+export type Guest = {
+  name: string;
+  /** Public role / what they are known for. */
+  title: string;
+  /** Which edition they appear at. */
+  editionLabel: string;
+  note: string;
+  /** Photo path, or null for a marked placeholder. */
+  src: string | null;
+};
+
+/** {{SONU_SHARMA_OFFICIAL_PHOTO}} — announced Chief Guest for 2026. */
+export const CHIEF_GUEST_2026: Guest = {
+  name: "Sonu Sharma",
+  title: "Motivational speaker & entrepreneur",
+  editionLabel: "Chief Guest · 2026",
+  note: "Founder of Dynamic India Group, one of India's most-watched speakers on business and self-belief — joining the stage in Mumbai to hand the network its honours.",
+  src: null, // placeholder until an official, licensed photo is supplied
+} as const;
+
+/** Chief guest at the 2024 edition — real photography on file. */
+export const PAST_GUEST: Guest = {
   name: "Ashneer Grover",
-  note: "presented the honours at the 2024 edition",
+  title: "Entrepreneur & investor",
+  editionLabel: "Chief Guest · 2024",
+  note: "Presented the honours at the 2024 show.",
   src: "/awards/2024/ashneer-grover.jpg",
 } as const;
 
 /* ------------------------------------------------------------------
-   Evening agenda — {{FINAL_RUN_OF_SHOW}}
+   Run of show — {{FINAL_RUN_OF_SHOW}}
    ------------------------------------------------------------------ */
 
 export const AGENDA = [
   {
-    time: "5:00 PM",
-    title: "Red carpet & registration",
+    time: "10:30 AM",
+    title: "Registration & red carpet",
     detail: "Arrivals, photographs and the guest lounge open.",
   },
   {
-    time: "6:00 PM",
+    time: "11:00 AM",
     title: "Opening ceremony",
     detail: "Lamp lighting and the welcome address.",
   },
   {
-    time: "6:30 PM",
-    title: "Keynote",
-    detail: "{{KEYNOTE SPEAKER}} on the decade ahead for skills training.",
+    time: "11:30 AM",
+    title: "Chief guest keynote",
+    detail: "Sonu Sharma on business, skills and self-belief.",
   },
   {
-    time: "7:00 PM",
+    time: "12:30 PM",
     title: "The 100 honours",
-    detail: "All categories, presented across two acts.",
+    detail: "Every award, presented across two acts.",
   },
   {
-    time: "9:00 PM",
-    title: "Dinner & networking",
-    detail: "The night's real business, over a long table.",
+    time: "2:00 PM",
+    title: "Lunch & networking",
+    detail: "The day's real business, over a long table.",
   },
 ] as const;
 
@@ -260,7 +355,7 @@ export const FAQS = [
   },
   {
     q: "What is the dress code?",
-    a: "Formal or formal Indian evening wear. It is an award night, and there will be a great many photographs.",
+    a: "Formal, or formal Indian wear. It is a ceremony with a red carpet and a great many photographs.",
   },
   {
     q: "How do I get seats?",

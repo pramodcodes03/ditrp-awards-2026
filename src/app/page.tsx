@@ -1,16 +1,17 @@
 import { Hero } from "@/components/sections/Hero";
 import { MarqueeRibbon } from "@/components/sections/MarqueeRibbon";
 import { About } from "@/components/sections/About";
+import { Teaser } from "@/components/sections/Teaser";
 import { Nominees } from "@/components/sections/Nominees";
 import { Categories } from "@/components/sections/Categories";
-import { Gallery } from "@/components/sections/Gallery";
-import { PastGuest } from "@/components/sections/PastGuest";
+import { Editions } from "@/components/sections/Editions";
+import { ChiefGuest } from "@/components/sections/ChiefGuest";
 import { Agenda } from "@/components/sections/Agenda";
 import { Venue } from "@/components/sections/Venue";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Partners } from "@/components/sections/Partners";
 import { Faq } from "@/components/sections/Faq";
-import { EVENT, FAQS, SITE_URL } from "@/lib/site";
+import { EVENT, FAQS, SITE_URL, TEASER } from "@/lib/site";
 
 /**
  * Event + FAQPage structured data.
@@ -55,6 +56,17 @@ const jsonLd = {
       performer: { "@type": "Organization", name: EVENT.organizer },
     },
     {
+      "@type": "VideoObject",
+      "@id": `${SITE_URL}/#teaser`,
+      name: `${EVENT.name} — Official Teaser`,
+      description:
+        "The official teaser film for India's Best 100 Institute Award Show 2026, presented by DITRP in Mumbai.",
+      thumbnailUrl: [`${SITE_URL}${TEASER.poster}`],
+      contentUrl: `${SITE_URL}${TEASER.src}`,
+      uploadDate: "2026-07-01",
+      duration: "PT1M45S",
+    },
+    {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,
       mainEntity: FAQS.map((faq) => ({
@@ -80,10 +92,11 @@ export default function Home() {
         <Hero />
         <MarqueeRibbon />
         <About />
+        <Teaser />
+        <ChiefGuest />
         <Nominees />
         <Categories />
-        <Gallery />
-        <PastGuest />
+        <Editions />
         <Agenda />
         <Venue />
         <FinalCta />

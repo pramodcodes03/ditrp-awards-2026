@@ -114,7 +114,7 @@ export function Nominees() {
           className="mt-10 text-center text-[13px] text-mist/80"
         >
           Nominations shown are a selection. The full list of 100 is announced on
-          the night.
+          the day.
         </p>
       </div>
     </section>

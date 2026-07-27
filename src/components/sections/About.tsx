@@ -14,7 +14,7 @@ import {
    that SplitHeading uses as its line break. The full stop sits *inside* the
    italic markers because SplitText splits on whitespace and joins words with a
    space — a trailing "." outside them would render as its own detached word. */
-const HEADING = "One night.\nOne hundred *institutes.*";
+const HEADING = "One stage.\nOne hundred *institutes.*";
 
 /**
  * Hairlines for the 2×2 plaque.
@@ -39,7 +39,7 @@ export function About() {
       <div className="grid gap-x-14 gap-y-14 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">
           <SectionHeading
-            eyebrow="About the night"
+            eyebrow="About the show"
             id="about-heading"
             heading={HEADING}
             gold
@@ -54,7 +54,7 @@ export function About() {
               data-reveal=""
               className="max-w-[58ch] text-[17px] leading-relaxed text-pretty text-mist"
             >
-              India&rsquo;s Best 100 Institute Award Show is the one evening{" "}
+              India&rsquo;s Best 100 Institute Award Show is the one day{" "}
               {EVENT.organizer} sets aside to call the roll.{" "}
               {EVENT.organizerFull} honours the hundred computer-training
               institutes that did the most for their students over the year —

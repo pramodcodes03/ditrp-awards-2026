@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 /* Declared here, not inline: a JSX string attribute would not escape the "\n"
    that SplitHeading uses as its line break. */
-const HEADING = "How the\n*evening* unfolds.";
+const HEADING = "How the\n*day* unfolds.";
 
 /**
  * The line's hidden state has to be server-rendered CSS, not a gsap.set() —

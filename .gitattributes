@@ -1,0 +1,8 @@
+# Large binaries via Git LFS.
+# Scoped deliberately: the teaser video, and the raw camera originals in the
+# source photo folder (all named DSC*). The small optimised images the site
+# actually serves live under public/ as normal git blobs, so a host that
+# doesn't smudge LFS still gets real bytes to deploy.
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+DSC*.JPG filter=lfs diff=lfs merge=lfs -text
+DSC*.jpeg filter=lfs diff=lfs merge=lfs -text

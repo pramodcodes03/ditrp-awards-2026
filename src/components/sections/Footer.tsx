@@ -131,7 +131,7 @@ export function Footer() {
               {EVENT.organizer} works with computer training institutes the
               length of the country — the classrooms, the directors and the
               faculty who turn skills training into placements. {EVENT.name} is
-              the one night a year the whole network sits in the same room: a
+              the one day a year the whole network sits in the same room: a
               hundred institutes called to the stage in {EVENT.city}, and the
               people behind them named out loud.
             </p>
