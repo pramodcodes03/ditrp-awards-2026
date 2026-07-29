@@ -2,23 +2,42 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import { NOMINEE_CARDS } from "@/lib/nominees-2026";
+import { NOMINEE_CARDS, type NomineeCardImage } from "@/lib/nominees-2026";
+
+function shuffle(list: readonly NomineeCardImage[]): NomineeCardImage[] {
+  const out = [...list];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
 
 /**
  * The full wall of printed nominee cards, shown as-is, with a click-to-enlarge
  * lightbox. Everything the card needs to say is already on the artwork, so the
  * grid carries no overlaid text.
+ *
+ * The order is randomised on mount, so every visit deals a fresh sequence. The
+ * first render (and SSR) keeps the manifest order to match hydration.
  */
 export function NomineesGallery() {
+  const [cards, setCards] = useState<NomineeCardImage[]>(() => [
+    ...NOMINEE_CARDS,
+  ]);
   const [open, setOpen] = useState<number | null>(null);
+
+  useEffect(() => {
+    queueMicrotask(() => setCards(shuffle(NOMINEE_CARDS)));
+  }, []);
 
   const close = useCallback(() => setOpen(null), []);
   const step = useCallback(
     (delta: number) =>
       setOpen((i) =>
-        i === null ? i : (i + delta + NOMINEE_CARDS.length) % NOMINEE_CARDS.length,
+        i === null ? i : (i + delta + cards.length) % cards.length,
       ),
-    [],
+    [cards.length],
   );
 
   // Keyboard: Escape closes, arrows page through. Lock scroll while open.
@@ -38,12 +57,12 @@ export function NomineesGallery() {
     };
   }, [open, close, step]);
 
-  const active = open === null ? null : NOMINEE_CARDS[open];
+  const active = open === null ? null : cards[open];
 
   return (
     <>
       <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5">
-        {NOMINEE_CARDS.map((card, index) => (
+        {cards.map((card, index) => (
           <li key={card.slug}>
             <button
               type="button"
