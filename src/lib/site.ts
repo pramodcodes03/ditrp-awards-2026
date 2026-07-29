@@ -246,6 +246,54 @@ export type Edition = {
   photos: readonly GalleryPhoto[];
 };
 
+const GALLERY_2023: readonly GalleryPhoto[] = [
+  {
+    src: "/awards/2023/ceremony.jpg",
+    alt: "The India's Best 100 Institute Award ceremony on stage in Mumbai, 12 March 2023, with chief guest Dr. Vivek Bindra",
+    caption: "India's Best 100 · 2023",
+    w: 1400,
+    h: 1387,
+  },
+  {
+    src: "/awards/2023/winner.jpg",
+    alt: "A winning institute head receiving a trophy at the 2023 award show",
+    caption: "A winner, 2023",
+    w: 1400,
+    h: 935,
+  },
+  {
+    src: "/awards/2023/host.jpg",
+    alt: "The host addressing the India's Best 100 Institute Award Show 2023",
+    caption: "On stage, 2023",
+    w: 1400,
+    h: 935,
+  },
+] as const;
+
+const GALLERY_2025: readonly GalleryPhoto[] = [
+  {
+    src: "/awards/2025/winner-1.jpg",
+    alt: "A winner receiving the India's Best Academy of the Year 2025 award from Mr. Amzad Sathe",
+    caption: "India's Best Academy · 2025",
+    w: 1400,
+    h: 788,
+  },
+  {
+    src: "/awards/2025/winner-2.jpg",
+    alt: "An institute head being felicitated on stage at the 2025 award ceremony",
+    caption: "On stage, 2025",
+    w: 1400,
+    h: 788,
+  },
+  {
+    src: "/awards/2025/winner-3.jpg",
+    alt: "A winner receiving a gift on stage at the India's Best Academy of the Year 2025 ceremony",
+    caption: "A winner, 2025",
+    w: 1400,
+    h: 788,
+  },
+] as const;
+
 const GALLERY_2024: readonly GalleryPhoto[] = [
   {
     src: "/awards/2024/trophies.jpg",
@@ -295,9 +343,10 @@ export const EDITIONS: readonly Edition[] = [
   {
     year: "2023",
     label: "Where it began",
-    blurb: "The first editions that built the network's biggest day.",
+    blurb:
+      "India's Best 100 Institute Award Show 2023 in Mumbai, with Dr. Vivek Bindra as chief guest — the edition that started it all.",
     status: "past",
-    photos: [], // {{2023 PHOTOS}}
+    photos: GALLERY_2023,
   },
   {
     year: "2024",
@@ -313,7 +362,7 @@ export const EDITIONS: readonly Edition[] = [
     blurb:
       "The 2025 edition crowned India's Best Academy of the Year — the standard the 2026 show now builds on.",
     status: "past",
-    photos: [], // {{2025 PHOTOS}}
+    photos: GALLERY_2025,
   },
   {
     year: "2026",
