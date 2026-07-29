@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Globe, Mail, MapPin, Phone } from "lucide-react";
 import { useRevealScope } from "@/lib/use-reveal";
 import {
@@ -94,6 +95,12 @@ const SOCIALS = [
 export function Footer() {
   const scope = useRevealScope<HTMLElement>();
 
+  // Homepage-anchor links (#about, …) must jump home first from any other
+  // route; real routes (/book) are left alone.
+  const onHome = usePathname() === "/";
+  const resolve = (href: string) =>
+    !onHome && href.startsWith("#") ? `/${href}` : href;
+
   return (
     <footer ref={scope} className="relative isolate bg-navy py-16 lg:py-24">
       {/* Gold seam along the top edge, as on the border of the printed card. */}
@@ -153,7 +160,7 @@ export function Footer() {
               <ul className="flex flex-col gap-0.5">
                 {FOOTER_LINKS.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className={LINK_CLASS}>
+                    <Link href={resolve(link.href)} className={LINK_CLASS}>
                       {link.label}
                     </Link>
                   </li>

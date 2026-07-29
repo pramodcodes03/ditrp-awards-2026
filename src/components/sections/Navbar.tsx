@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   DUR,
@@ -65,6 +66,14 @@ export function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // The nav's section links are homepage anchors, so from any other route they
+  // have to jump home first. On "/" the logo scrolls to the top; elsewhere it
+  // navigates home. `#about` becomes `/#about` off the homepage.
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const logoHref = onHome ? "#top" : "/";
+  const sectionHref = (href: string) => (onHome ? href : `/${href}`);
 
   /**
    * Unlocks the document synchronously, then closes.
@@ -255,8 +264,10 @@ export function Navbar() {
       >
         <div className="container-page flex h-18 items-center justify-between gap-6 lg:h-20">
           <Link
-            href="#top"
-            aria-label={`${EVENT.name} — back to top`}
+            href={logoHref}
+            aria-label={
+              onHome ? `${EVENT.name} — back to top` : `${EVENT.name} — home`
+            }
             className="flex min-h-11 items-center rounded-[3px]"
           >
             <Brandmark />
@@ -267,7 +278,7 @@ export function Navbar() {
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={sectionHref(link.href)}
                     className="group relative flex min-h-11 items-center font-body text-[13px] font-medium tracking-[0.16em] text-mist uppercase transition-colors duration-300 ease-out hover:text-cream"
                   >
                     {link.label}
@@ -351,7 +362,7 @@ export function Navbar() {
                     className="border-b border-gold/20"
                   >
                     <Link
-                      href={link.href}
+                      href={sectionHref(link.href)}
                       onClick={closeMenu}
                       className="type-name flex min-h-14 items-center py-2 text-[clamp(20px,6.2vw,30px)] text-cream"
                     >
