@@ -349,7 +349,7 @@ export const CHIEF_GUEST_2026: Guest = {
   title: "Motivational speaker & entrepreneur",
   editionLabel: "Chief Guest · 2026",
   note: "Founder of Dynamic India Group, one of India's most-watched speakers on business and self-belief — joining the stage in Mumbai to hand the network its honours.",
-  src: null, // {{SONU_SHARMA_PHOTO}}
+  src: "/awards/guests/sonu-sharma.jpg",
 } as const;
 
 /** Chief guests from the previous editions, shown beneath the 2026 guest. */

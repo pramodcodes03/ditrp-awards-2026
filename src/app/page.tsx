@@ -10,7 +10,6 @@ import { ChiefGuest } from "@/components/sections/ChiefGuest";
 import { Agenda } from "@/components/sections/Agenda";
 import { Venue } from "@/components/sections/Venue";
 import { FinalCta } from "@/components/sections/FinalCta";
-import { Partners } from "@/components/sections/Partners";
 import { Faq } from "@/components/sections/Faq";
 import { EVENT, FAQS, SITE_URL, TEASER } from "@/lib/site";
 
@@ -102,7 +101,6 @@ export default function Home() {
         <Agenda />
         <Venue />
         <FinalCta />
-        <Partners />
         <Faq />
       </main>
     </>
