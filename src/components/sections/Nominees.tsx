@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { cn } from "@/lib/cn";
-import { NOMINEES, type Nominee } from "@/lib/site";
+import { NOMINEES, ROUTES, type Nominee } from "@/lib/site";
 import { useRevealScope } from "@/lib/use-reveal";
+import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Laurel, RibbonBanner, SparkleField, StarRow } from "@/components/ui/Ornaments";
 
@@ -20,13 +21,13 @@ function NomineeCard({ nominee }: { nominee: Nominee }) {
   return (
     <li
       data-reveal=""
-      className="panel-gold group relative flex flex-col items-center rounded-[4px] px-5 pt-9 pb-7 text-center sm:px-7"
+      className="panel-gold group relative flex w-[clamp(240px,80vw,300px)] shrink-0 snap-center flex-col items-center rounded-[4px] px-5 pt-9 pb-7 text-center sm:px-7"
     >
       {/* Medallion — the card's own gold frame, cropped from the artwork. */}
       <div className="relative">
         <span
           aria-hidden="true"
-          className="absolute -inset-3 rounded-full bg-gold/18 blur-xl transition-opacity duration-500 group-hover:opacity-160 motion-safe:opacity-70"
+          className="absolute -inset-3 rounded-full bg-gold/18 blur-xl transition-opacity duration-500 group-hover:opacity-100 motion-safe:opacity-70"
         />
         <Image
           src={`/awards/nominees/${nominee.slug}-portrait.jpg`}
@@ -103,19 +104,37 @@ export function Nominees() {
           </p>
         </SectionHeading>
 
-        <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {NOMINEES.map((nominee) => (
-            <NomineeCard key={nominee.slug} nominee={nominee} />
-          ))}
-        </ul>
+        {/* Horizontal snap carousel — swipeable on touch and clipped by the
+            scroller itself, so the page never scrolls sideways. Native
+            overflow-x scrolling keeps tab order intact and scrolls any focused
+            child into view. */}
+        <div className="relative mt-14">
+          <ul className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2">
+            {NOMINEES.map((nominee) => (
+              <NomineeCard key={nominee.slug} nominee={nominee} />
+            ))}
+          </ul>
 
-        <p
-          data-reveal=""
-          className="mt-10 text-center text-[13px] text-mist/80"
-        >
-          Nominations shown are a selection. The full list of 100 is announced on
-          the day.
-        </p>
+          {/* Soft navy edge-fades so cards dissolve at the rims, not cut off. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-linear-to-r from-navy to-transparent sm:w-20"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-linear-to-l from-navy to-transparent sm:w-20"
+          />
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-6">
+          <p data-reveal="" className="text-center text-[13px] text-mist/80">
+            Nominations shown are a selection. The full list of 100 is announced
+            on the day.
+          </p>
+          <Button data-reveal="" variant="metal" href={ROUTES.allNominees}>
+            View all nominees
+          </Button>
+        </div>
       </div>
     </section>
   );

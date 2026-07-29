@@ -35,10 +35,17 @@ export function Button({
   className?: string;
   children: React.ReactNode;
 } & Omit<React.ComponentPropsWithoutRef<typeof Link>, "href" | "className">) {
+  // An absolute http(s) URL (e.g. the Google Form) opens in a new tab; an
+  // in-page anchor or app route navigates normally.
+  const external = /^https?:\/\//.test(href);
+
   return (
     <Link
       href={href}
       className={cn(BASE, VARIANTS[variant], className)}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : null)}
       {...rest}
     >
       {children}

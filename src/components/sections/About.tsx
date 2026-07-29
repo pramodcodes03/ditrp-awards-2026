@@ -1,6 +1,7 @@
 import { cn } from "@/lib/cn";
-import { EVENT, STATS } from "@/lib/site";
+import { EVENT, STATS, ROUTES } from "@/lib/site";
 import { Counter } from "@/components/ui/Counter";
+import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
@@ -69,6 +70,12 @@ export function About() {
               {EVENT.dateLabel}, where the final hundred are called to the
               stage.
             </p>
+
+            <div data-reveal="" className="mt-2">
+              <Button variant="metal" href={ROUTES.nomineeBenefits}>
+                View nominee benefits
+              </Button>
+            </div>
           </div>
         </div>
 

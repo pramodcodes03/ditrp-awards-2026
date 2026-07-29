@@ -22,6 +22,7 @@ import {
   StarRow,
   Trophy,
 } from "@/components/ui/Ornaments";
+import { ConfettiBurst } from "@/components/ui/ConfettiBurst";
 
 /** The gold confetti scatter from the cards. Decorative, canvas, browser-only. */
 const DustCanvas = dynamic(
@@ -153,6 +154,10 @@ export function Hero() {
       <DustCanvas />
       <SparkleField className="-z-10" />
       <CornerFrame className="-z-10" size={110} inset={16} />
+
+      {/* Party-popper burst that fires as the hero appears (item 1). Above the
+          content so the confetti flies over the title; never intercepts taps. */}
+      <ConfettiBurst className="pointer-events-none absolute inset-0 z-20" />
 
       <div ref={contentRef} className="container-page will-change-transform">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">

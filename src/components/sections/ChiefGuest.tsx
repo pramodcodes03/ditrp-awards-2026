@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { cn } from "@/lib/cn";
-import { CHIEF_GUEST_2026, PAST_GUEST, type Guest } from "@/lib/site";
+import { CHIEF_GUEST_2026, GUESTS, type Guest, BOOKING_URL } from "@/lib/site";
 import { useRevealScope } from "@/lib/use-reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { BOOKING_URL } from "@/lib/site";
+import { PhotoMedallion } from "@/components/ui/PhotoMedallion";
 import {
   CornerFrame,
   Laurel,
@@ -14,39 +12,35 @@ import {
   StarRow,
 } from "@/components/ui/Ornaments";
 
-/** Gold-ringed portrait. A null src renders a marked placeholder coin. */
-function GuestMedallion({ guest, size }: { guest: Guest; size: "lg" | "sm" }) {
-  const px = size === "lg" ? "w-[clamp(190px,44vw,260px)]" : "w-[clamp(150px,40vw,190px)]";
+/** A smaller horizontal honour card for a past / honorary guest. */
+function GuestCard({ guest }: { guest: Guest }) {
   return (
-    <div className={cn("relative aspect-square shrink-0", px)}>
-      {/* gold coin edge */}
-      <div className="ring-metal absolute inset-0 rounded-full" />
-      <div className="absolute inset-[6px] overflow-hidden rounded-full bg-royal-lit">
-        {guest.src ? (
-          <Image
-            src={guest.src}
-            alt={`${guest.name}, ${guest.editionLabel}`}
-            fill
-            sizes="260px"
-            className="object-cover"
-          />
-        ) : (
-          // Marked photo placeholder — never a stand-in face for a named person.
-          <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-linear-to-b from-royal-lit to-navy text-center">
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-1/3 w-1/3 text-gold/70" fill="currentColor">
-              <circle cx="12" cy="8" r="4.2" />
-              <path d="M3.5 21c0-4.7 3.8-7.5 8.5-7.5s8.5 2.8 8.5 7.5z" />
-            </svg>
-            <span className="type-eyebrow px-3 text-[9px] text-gold-light/70">
-              Official photo
-              <br />
-              to be added
-            </span>
-          </div>
-        )}
+    <div
+      data-reveal=""
+      className="flex flex-col items-center gap-5 rounded-[6px] border border-gold/22 bg-navy/40 px-6 py-6 text-center sm:flex-row sm:gap-8 sm:text-left"
+    >
+      <PhotoMedallion
+        src={guest.src}
+        alt={`${guest.name}, ${guest.editionLabel}`}
+        label={"Official photo\nto be added"}
+        sizes="190px"
+        className="w-[clamp(150px,40vw,190px)] shrink-0"
+      />
+      <div className="flex flex-1 flex-col items-center sm:items-start">
+        <div className="flex items-center gap-3">
+          <Laurel side="left" className="hidden h-9 w-5 sm:block" />
+          <span className="type-eyebrow text-gold-light/80">
+            {guest.editionLabel}
+          </span>
+          <Laurel side="right" className="hidden h-9 w-5 sm:block" />
+        </div>
+        <h3 className="type-display mt-2 text-[clamp(1.3rem,3vw,1.9rem)] text-cream">
+          {guest.name}
+        </h3>
+        <p className="mt-2 max-w-[48ch] text-[14px] leading-relaxed text-mist">
+          {guest.title} — {guest.note}
+        </p>
       </div>
-      {/* thin inner ring */}
-      <div aria-hidden="true" className="absolute inset-[6px] rounded-full ring-1 ring-gold/40" />
     </div>
   );
 }
@@ -74,7 +68,7 @@ export function ChiefGuest() {
           headingClassName="text-center"
         />
 
-        {/* Featured 2026 guest — Sonu Sharma. */}
+        {/* Featured 2026 chief guest — Sonu Sharma. */}
         <div
           data-reveal=""
           className="panel-gold relative mx-auto mt-12 flex max-w-4xl flex-col items-center gap-8 rounded-[6px] px-6 py-10 text-center sm:px-10 md:flex-row md:gap-12 md:text-left"
@@ -82,7 +76,12 @@ export function ChiefGuest() {
           <CornerFrame size={64} inset={12} />
 
           <div className="relative flex flex-col items-center gap-4">
-            <GuestMedallion guest={guest} size="lg" />
+            <PhotoMedallion
+              src={guest.src}
+              alt={`${guest.name}, ${guest.editionLabel}`}
+              label={"Official photo\nto be added"}
+              className="w-[clamp(190px,44vw,260px)]"
+            />
             <StarRow size={13} />
           </div>
 
@@ -108,28 +107,11 @@ export function ChiefGuest() {
           </div>
         </div>
 
-        {/* 2024 guest — Ashneer Grover, real photography. */}
-        <div
-          data-reveal=""
-          className="mx-auto mt-8 flex max-w-4xl flex-col items-center gap-5 rounded-[6px] border border-gold/22 bg-navy/40 px-6 py-6 text-center sm:flex-row sm:gap-8 sm:text-left"
-        >
-          <GuestMedallion guest={PAST_GUEST} size="sm" />
-          <div className="flex flex-1 flex-col items-center sm:items-start">
-            <div className="flex items-center gap-3">
-              <Laurel side="left" className="hidden h-9 w-5 sm:block" />
-              <span className="type-eyebrow text-gold-light/80">
-                {PAST_GUEST.editionLabel}
-              </span>
-              <Laurel side="right" className="hidden h-9 w-5 sm:block" />
-            </div>
-            <h3 className="type-display mt-2 text-[clamp(1.3rem,3vw,1.9rem)] text-cream">
-              {PAST_GUEST.name}
-            </h3>
-            <p className="mt-2 max-w-[48ch] text-[14px] leading-relaxed text-mist">
-              {PAST_GUEST.title} — {PAST_GUEST.note} The 2024 edition drew a full
-              hall and a hundred trophies; 2026 raises the stage again.
-            </p>
-          </div>
+        {/* Past & honorary guests, in array order. */}
+        <div className="mx-auto mt-8 flex max-w-4xl flex-col gap-6">
+          {GUESTS.map((g) => (
+            <GuestCard key={g.name} guest={g} />
+          ))}
         </div>
       </div>
     </section>

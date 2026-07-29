@@ -4,12 +4,12 @@ import { AWARDS, type Award } from "@/lib/site";
 import { useRevealScope } from "@/lib/use-reveal";
 import { SplitHeading } from "@/lib/split-text";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { PhotoMedallion } from "@/components/ui/PhotoMedallion";
 import {
   CornerFrame,
   Laurel,
   SparkleField,
   StarRow,
-  Trophy,
 } from "@/components/ui/Ornaments";
 
 /* Declared out here so "\n" reaches SplitHeading as a real line break. */
@@ -46,8 +46,22 @@ function AwardPanel({ award }: { award: Award }) {
         Award {award.index}
       </span>
 
-      <span className="relative mt-7 block transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
-        <Trophy size={92} />
+      {/* The presenter's photo replaces the old trophy ornament. Until a
+          licensed photo is supplied, PhotoMedallion shows a marked placeholder
+          rather than a stand-in face. */}
+      <span className="relative mt-7 flex flex-col items-center transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
+        <PhotoMedallion
+          src={award.presenterSrc}
+          alt={`${award.presenter}, ${award.presenterRole} the ${award.title.replace("\n", " ")}`}
+          label="Photo to be added"
+          className="w-[clamp(120px,30vw,150px)]"
+        />
+        <span className="type-eyebrow mt-4 text-[10px] text-gold-light">
+          {award.presenterRole}
+        </span>
+        <span className="type-name mt-1 text-[clamp(0.85rem,1.8vw,1rem)] text-cream">
+          {award.presenter}
+        </span>
       </span>
 
       <span aria-hidden="true" className="rule-gold relative mt-8 max-w-[190px]" />

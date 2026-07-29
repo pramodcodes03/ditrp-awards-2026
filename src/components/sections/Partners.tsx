@@ -1,6 +1,9 @@
 "use client";
 
+import Image from "next/image";
+
 import { PARTNERS } from "@/lib/site";
+import type { Partner } from "@/lib/site";
 import { useRevealScope } from "@/lib/use-reveal";
 import { Marquee } from "@/components/ui/Marquee";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -15,6 +18,39 @@ const LOOP_SECONDS = 60;
  */
 const MARQUEE_CLASS =
   "motion-reduce:overflow-x-auto motion-reduce:overscroll-x-contain";
+
+/**
+ * One partner plate. A supplied logo sits on a cream chip so a coloured mark
+ * reads against the blue field (the DiTRP logo treatment); until then, the tier
+ * and name stand in as a clean, labelled placeholder — the section is never
+ * empty even before a single logo lands.
+ */
+function PartnerPlate({ partner }: { partner: Partner }) {
+  return (
+    <div className="panel-gold group/plate mx-3 flex h-[92px] w-[200px] shrink-0 items-center justify-center rounded-[4px] px-4 text-center transition-colors duration-300 hover:border-gold/75 sm:mx-4">
+      {partner.logo ? (
+        <span className="flex h-[64px] w-full items-center justify-center rounded-[3px] bg-cream px-3">
+          <Image
+            src={partner.logo}
+            alt={partner.name}
+            width={160}
+            height={60}
+            className="h-auto max-h-[48px] w-auto max-w-full object-contain"
+          />
+        </span>
+      ) : (
+        <span className="flex flex-col items-center justify-center gap-1.5">
+          <span className="type-eyebrow text-[10px] text-gold-light/90">
+            {partner.tier}
+          </span>
+          <span className="type-name text-[13px] leading-tight text-mist transition-colors duration-300 group-hover/plate:text-gold">
+            {partner.name}
+          </span>
+        </span>
+      )}
+    </div>
+  );
+}
 
 export function Partners() {
   const scope = useRevealScope<HTMLElement>();
@@ -35,6 +71,10 @@ export function Partners() {
           className="items-center text-center"
           headingClassName="text-center text-[clamp(1.5rem,3vw,2.25rem)]"
         >
+          <p className="mx-auto max-w-md text-[13px] leading-relaxed text-mist">
+            Our partners for the 2026 show are being confirmed — logos land here
+            as each is signed.
+          </p>
           <div
             aria-hidden="true"
             data-fade=""
@@ -49,12 +89,7 @@ export function Partners() {
       <div data-reveal="" className="relative mt-14 sm:mt-16">
         <Marquee speed={LOOP_SECONDS} className={MARQUEE_CLASS}>
           {PARTNERS.map((partner) => (
-            <div
-              key={partner}
-              className="panel-gold type-eyebrow mx-3 flex h-[88px] w-[200px] shrink-0 items-center justify-center rounded-[4px] px-4 text-center text-[11px] leading-[1.6] text-mist transition-colors duration-300 hover:border-gold/75 hover:text-gold sm:mx-4"
-            >
-              {partner}
-            </div>
+            <PartnerPlate key={partner.name} partner={partner} />
           ))}
         </Marquee>
 

@@ -21,10 +21,9 @@ export const EVENT = {
   /** Printed on every card. */
   cin: "U74999MH2018OPC303654",
 
-  /** Show starts 11:00 AM IST (the 2024 cards ran a 10 AM start). */
-  startISO: "2026-09-27T11:00:00+05:30",
-  /** {{SHOW_END_TIME}} */
-  endISO: "2026-09-27T16:00:00+05:30",
+  /** Doors 08:30, commencement 09:30; the countdown targets commencement. */
+  startISO: "2026-09-27T09:30:00+05:30",
+  endISO: "2026-09-27T17:30:00+05:30",
 
   dateLabel: "Sunday, 27 September 2026",
   dateShort: "27 September 2026",
@@ -46,12 +45,27 @@ export const EVENT = {
 
 export const SITE_URL = "https://awards.ditrpindia.org"; // {{PRODUCTION_URL}}
 
-/** {{BOOKING_FORM_URL}} — anchors to the CTA band so nothing is a dead link. */
-export const BOOKING_URL = "#reserve";
-/** {{NOMINATION_FORM_URL}} */
-export const NOMINATION_URL = "#reserve";
+/**
+ * "Book your seat" is the Google Form, embedded on a dedicated /book page and
+ * beautifully framed. Buttons link to /book (internal route); the raw short
+ * link and embed URL live here.
+ */
+export const BOOKING_URL = "/book";
+export const NOMINATION_URL = "/book";
+/** Short link, kept for reference / an "open in Google Forms" fallback link. */
+export const BOOKING_FORM_LINK = "https://forms.gle/kexp9vv2wCZCVCV89";
+/** The embeddable Google Form URL used in the /book page iframe. */
+export const BOOKING_FORM_EMBED =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfQnsvajQ0u7ytcWK3JyHS3QaNfGm7LX0pNAp1J8w1on9Bh3A/viewform?embedded=true";
 /** {{GOOGLE_MAPS_DIRECTIONS_URL}} */
 export const DIRECTIONS_URL = "#venue";
+
+/** Internal routes. */
+export const ROUTES = {
+  nomineeBenefits: "/nominee-benefits",
+  allNominees: "/nominees",
+  book: "/book",
+} as const;
 
 /* ------------------------------------------------------------------
    Navigation
@@ -158,6 +172,11 @@ export type Award = {
   description: string;
   /** Who the award is for. */
   forWhom: string;
+  /** The person presenting it — their photo replaces the trophy icon. */
+  presenter: string;
+  presenterRole: string;
+  /** Photo path, or null for a marked placeholder. */
+  presenterSrc: string | null;
 };
 
 export const AWARDS: readonly Award[] = [
@@ -168,6 +187,9 @@ export const AWARDS: readonly Award[] = [
     description:
       "The hundred computer training institutes that did the most for their students this year — seats filled, skills certified, careers started. One trophy each, presented on stage in Mumbai.",
     forWhom: "For the institute",
+    presenter: "Mr. Sonu Sharma",
+    presenterRole: "Presented by",
+    presenterSrc: null, // {{SONU_SHARMA_PHOTO}}
   },
   {
     index: "02",
@@ -176,6 +198,9 @@ export const AWARDS: readonly Award[] = [
     description:
       "For the directors and faculty behind those centres: the person who kept the doors open, taught the room, and turned a year of work into results worth reading out loud.",
     forWhom: "For the director & faculty",
+    presenter: "Sathe Sir",
+    presenterRole: "Presented by",
+    presenterSrc: null, // {{SATHE_SIR_PHOTO}}
   },
 ] as const;
 
@@ -262,9 +287,17 @@ export const EDITIONS: readonly Edition[] = [
     year: "2024",
     label: "The day that scaled it",
     blurb:
-      "India's Best 100 and the Bihar Excellence in Education Awards — a full hall, a hundred trophies, Ashneer Grover on stage.",
+      "India's Best 100 and the Bihar Excellence in Education Awards — a full hall, a hundred trophies, one unforgettable stage.",
     status: "past",
     photos: GALLERY_2024,
+  },
+  {
+    year: "2025",
+    label: "India's Best Academy of the Year",
+    blurb:
+      "The 2025 edition crowned India's Best Academy of the Year — the standard the 2026 show now builds on.",
+    status: "past",
+    photos: [], // {{2025 PHOTOS}}
   },
   {
     year: "2026",
@@ -290,23 +323,39 @@ export type Guest = {
   src: string | null;
 };
 
-/** {{SONU_SHARMA_OFFICIAL_PHOTO}} — announced Chief Guest for 2026. */
+/**
+ * Featured Chief Guest for 2026.
+ * {{SONU_SHARMA_OFFICIAL_PHOTO}} — drop a licensed photo at
+ * public/awards/guests/sonu-sharma.jpg and set `src` to that path.
+ */
 export const CHIEF_GUEST_2026: Guest = {
   name: "Sonu Sharma",
   title: "Motivational speaker & entrepreneur",
   editionLabel: "Chief Guest · 2026",
   note: "Founder of Dynamic India Group, one of India's most-watched speakers on business and self-belief — joining the stage in Mumbai to hand the network its honours.",
-  src: null, // placeholder until an official, licensed photo is supplied
+  src: null, // {{SONU_SHARMA_PHOTO}}
 } as const;
 
-/** Chief guest at the 2024 edition — real photography on file. */
-export const PAST_GUEST: Guest = {
-  name: "Ashneer Grover",
-  title: "Entrepreneur & investor",
-  editionLabel: "Chief Guest · 2024",
-  note: "Presented the honours at the 2024 show.",
-  src: "/awards/2024/ashneer-grover.jpg",
-} as const;
+/**
+ * Past & honorary guests, shown beneath the 2026 chief guest.
+ * {{DR_VIVEK_BINDRA_PHOTO}} — drop a licensed photo and set `src`.
+ */
+export const GUESTS: readonly Guest[] = [
+  {
+    name: "Ashneer Grover",
+    title: "Entrepreneur & investor",
+    editionLabel: "Chief Guest · 2023",
+    note: "Took the stage as chief guest at a previous edition of the show.",
+    src: "/awards/2024/ashneer-grover.jpg",
+  },
+  {
+    name: "Dr. Vivek Bindra",
+    title: "Motivational speaker & business coach",
+    editionLabel: "Guest of Honour",
+    note: "One of India's best-known business coaches, joining the roll of honoured guests.",
+    src: null, // {{DR_VIVEK_BINDRA_PHOTO}}
+  },
+] as const;
 
 /* ------------------------------------------------------------------
    Run of show — {{FINAL_RUN_OF_SHOW}}
@@ -314,29 +363,49 @@ export const PAST_GUEST: Guest = {
 
 export const AGENDA = [
   {
+    time: "8:30 AM",
+    title: "Registration & Welcome",
+    detail: "Arrivals, the red carpet and the guest lounge open.",
+  },
+  {
+    time: "9:30 AM",
+    title: "Event Commencement",
+    detail: "Lamp lighting and the opening address.",
+  },
+  {
+    time: "10:00 AM",
+    title: "Grand Entry of Sathe Sir",
+    detail: "The chief mentor takes the stage.",
+  },
+  {
     time: "10:30 AM",
-    title: "Registration & red carpet",
-    detail: "Arrivals, photographs and the guest lounge open.",
+    title: "Motivational & Success Seminar",
+    detail: "A keynote session led by Sathe Sir.",
   },
   {
-    time: "11:00 AM",
-    title: "Opening ceremony",
-    detail: "Lamp lighting and the welcome address.",
-  },
-  {
-    time: "11:30 AM",
-    title: "Chief guest keynote",
-    detail: "Sonu Sharma on business, skills and self-belief.",
-  },
-  {
-    time: "12:30 PM",
-    title: "The 100 honours",
-    detail: "Every award, presented across two acts.",
+    time: "1:00 PM",
+    title: "Lunch Break",
+    detail: "Lunch and networking for every guest.",
   },
   {
     time: "2:00 PM",
-    title: "Lunch & networking",
-    detail: "The day's real business, over a long table.",
+    title: "Excellence in Education Award 2026",
+    detail: "The honours, presented by Sathe Sir.",
+  },
+  {
+    time: "3:00 PM",
+    title: "India's Best 100 Institute Award 2026",
+    detail: "The hundred trophies, presented by Mr. Sonu Sharma.",
+  },
+  {
+    time: "5:00 PM",
+    title: "Group Photo Session & Networking",
+    detail: "Every winner, on stage, on camera.",
+  },
+  {
+    time: "5:30 PM",
+    title: "Vote of Thanks & Conclusion",
+    detail: "The close of the day.",
   },
 ] as const;
 
@@ -383,14 +452,72 @@ export const MARQUEE_ITEMS = [
 ] as const;
 
 /* ------------------------------------------------------------------
-   Partners — {{SPONSOR_LOGOS}}
+   Partners & sponsors
+   ------------------------------------------------------------------
+   To add or manage a partner: drop the logo (transparent PNG/SVG) into
+   public/awards/partners/ and set `logo` to that path. With `logo: null`
+   a labelled placeholder box renders instead, so the section is never empty.
+   (A true upload-from-the-browser admin needs a CMS/back end — see the note
+   in the redesign summary; this folder + list is the no-backend way to
+   manage the logos today.)
    ------------------------------------------------------------------ */
 
-export const PARTNERS = [
-  "{{TITLE SPONSOR}}",
-  "{{POWERED BY}}",
-  "{{KNOWLEDGE PARTNER}}",
-  "{{MEDIA PARTNER}}",
-  "{{HOSPITALITY PARTNER}}",
-  "{{TECH PARTNER}}",
+export type Partner = {
+  name: string;
+  tier: string;
+  /** Logo path under /awards/partners/, or null for a placeholder box. */
+  logo: string | null;
+};
+
+export const PARTNERS: readonly Partner[] = [
+  { name: "{{TITLE SPONSOR}}", tier: "Title Sponsor", logo: null },
+  { name: "{{POWERED BY}}", tier: "Powered by", logo: null },
+  { name: "{{KNOWLEDGE PARTNER}}", tier: "Knowledge Partner", logo: null },
+  { name: "{{MEDIA PARTNER}}", tier: "Media Partner", logo: null },
+  { name: "{{HOSPITALITY PARTNER}}", tier: "Hospitality Partner", logo: null },
+  { name: "{{TECH PARTNER}}", tier: "Tech Partner", logo: null },
+] as const;
+
+/* ------------------------------------------------------------------
+   Nominee benefits — shown on the dedicated /nominee-benefits page.
+   ------------------------------------------------------------------ */
+
+export type Benefit = {
+  /** lucide-react icon key, mapped in the component. */
+  icon: "coffee" | "utensils" | "ticket" | "camera" | "radio" | "megaphone";
+  title: string;
+  detail: string;
+};
+
+export const NOMINEE_BENEFITS: readonly Benefit[] = [
+  {
+    icon: "coffee",
+    title: "Morning Breakfast",
+    detail: "The day starts with breakfast for every nominee and guest.",
+  },
+  {
+    icon: "utensils",
+    title: "Lunch & Evening Snacks",
+    detail: "A full lunch and evening snacks, on us, through the day.",
+  },
+  {
+    icon: "ticket",
+    title: "Full-Day Event Pass",
+    detail: "Access to the entire programme, from red carpet to close.",
+  },
+  {
+    icon: "camera",
+    title: "4K Photos & Videos",
+    detail: "Professionally shot 4K photos and video of your moment on stage.",
+  },
+  {
+    icon: "radio",
+    title: "Live Social Media Coverage",
+    detail: "Your win, shared live across DITRP's social channels.",
+  },
+  {
+    icon: "megaphone",
+    title: "Media Exposure + Networking",
+    detail: "Press coverage and a room full of the network's best to meet.",
+  },
 ] as const;
