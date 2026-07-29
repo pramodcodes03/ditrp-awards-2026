@@ -352,24 +352,21 @@ export const CHIEF_GUEST_2026: Guest = {
   src: null, // {{SONU_SHARMA_PHOTO}}
 } as const;
 
-/**
- * Past & honorary guests, shown beneath the 2026 chief guest.
- * {{DR_VIVEK_BINDRA_PHOTO}} — drop a licensed photo and set `src`.
- */
+/** Chief guests from the previous editions, shown beneath the 2026 guest. */
 export const GUESTS: readonly Guest[] = [
   {
     name: "Ashneer Grover",
     title: "Entrepreneur & investor",
-    editionLabel: "Chief Guest · 2023",
-    note: "Took the stage as chief guest at a previous edition of the show.",
+    editionLabel: "Chief Guest · 2024",
+    note: "Took the stage as chief guest at the 2024 edition of the show.",
     src: "/awards/2024/ashneer-grover.jpg",
   },
   {
     name: "Dr. Vivek Bindra",
     title: "Motivational speaker & business coach",
-    editionLabel: "Guest of Honour",
-    note: "One of India's best-known business coaches, joining the roll of honoured guests.",
-    src: null, // {{DR_VIVEK_BINDRA_PHOTO}}
+    editionLabel: "Chief Guest · 2023",
+    note: "Founder & CEO of Bada Business and one of India's best-known business coaches — chief guest at the 2023 edition.",
+    src: "/awards/guests/dr-vivek-bindra.jpg",
   },
 ] as const;
 
