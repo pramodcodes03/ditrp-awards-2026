@@ -205,7 +205,7 @@ export const AWARDS: readonly Award[] = [
     forWhom: "For the institute",
     presenter: "Mr. Sonu Sharma",
     presenterRole: "Presented by",
-    presenterSrc: null, // {{SONU_SHARMA_PHOTO}}
+    presenterSrc: "/awards/guests/sonu-sharma.jpg",
   },
   {
     index: "02",
@@ -216,7 +216,7 @@ export const AWARDS: readonly Award[] = [
     forWhom: "For the director & faculty",
     presenter: "Sathe Sir",
     presenterRole: "Presented by",
-    presenterSrc: null, // {{SATHE_SIR_PHOTO}}
+    presenterSrc: "/awards/guests/sathe-sir.jpg",
   },
 ] as const;
 
@@ -359,7 +359,7 @@ export const GUESTS: readonly Guest[] = [
     title: "Entrepreneur & investor",
     editionLabel: "Chief Guest · 2024",
     note: "Took the stage as chief guest at the 2024 edition of the show.",
-    src: "/awards/2024/ashneer-grover.jpg",
+    src: "/awards/guests/ashneer-grover.jpg",
   },
   {
     name: "Dr. Vivek Bindra",
