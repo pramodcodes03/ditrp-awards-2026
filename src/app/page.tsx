@@ -4,6 +4,7 @@ import { About } from "@/components/sections/About";
 import { Teaser } from "@/components/sections/Teaser";
 import { Nominees } from "@/components/sections/Nominees";
 import { Categories } from "@/components/sections/Categories";
+import { StageShowcase } from "@/components/sections/StageShowcase";
 import { Editions } from "@/components/sections/Editions";
 import { ChiefGuest } from "@/components/sections/ChiefGuest";
 import { Agenda } from "@/components/sections/Agenda";
@@ -96,6 +97,7 @@ export default function Home() {
         <ChiefGuest />
         <Nominees />
         <Categories />
+        <StageShowcase />
         <Editions />
         <Agenda />
         <Venue />

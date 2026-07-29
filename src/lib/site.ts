@@ -45,6 +45,22 @@ export const EVENT = {
 
 export const SITE_URL = "https://awards.ditrpindia.org"; // {{PRODUCTION_URL}}
 
+/** The Mumbai key-visual shown in the Venue section. */
+export const VENUE_IMAGE = {
+  src: "/awards/mumbai-keyvisual.jpg",
+  alt: "India's Best 100 Institute Award 2026 over the Mumbai skyline at dusk — the Bandra–Worli Sea Link, the Gateway of India and the city lights",
+  w: 1600,
+  h: 1068,
+} as const;
+
+/** The award-stage key-visual shown after the awards section. */
+export const STAGE_IMAGE = {
+  src: "/awards/stage-2026.jpg",
+  alt: "The India's Best 100 Institute Award Show 2026 stage — a golden Excellence in Education trophy on a red carpet before a lit LED backdrop",
+  w: 1600,
+  h: 1200,
+} as const;
+
 /**
  * "Book your seat" is the Google Form, embedded on a dedicated /book page and
  * beautifully framed. Buttons link to /book (internal route); the raw short
