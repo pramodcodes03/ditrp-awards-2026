@@ -3,6 +3,7 @@ import { MarqueeRibbon } from "@/components/sections/MarqueeRibbon";
 import { About } from "@/components/sections/About";
 import { Teaser } from "@/components/sections/Teaser";
 import { Founder } from "@/components/sections/Founder";
+import { OurTeam } from "@/components/sections/OurTeam";
 import { Nominees } from "@/components/sections/Nominees";
 import { Categories } from "@/components/sections/Categories";
 import { StageShowcase } from "@/components/sections/StageShowcase";
@@ -98,6 +99,7 @@ export default function Home() {
         <About />
         <Teaser />
         <Founder />
+        <OurTeam />
         <ChiefGuest />
         <Nominees />
         <Categories />

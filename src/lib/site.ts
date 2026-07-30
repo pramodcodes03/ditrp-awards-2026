@@ -59,6 +59,15 @@ export const STAGE_IMAGE = {
   h: 1200,
 } as const;
 
+/** The DITRP team on stage at the 2024 award ceremony. */
+export const TEAM_IMAGE = {
+  src: "/awards/team-2024.jpg",
+  alt: "The DITRP India team on stage at the India's Best 100 Institute Award Show, Mumbai",
+  caption: "The DITRP team · Award Show, Mumbai",
+  w: 2000,
+  h: 1335,
+} as const;
+
 /**
  * "Book your seat" is the Google Form, embedded on a dedicated /book page and
  * beautifully framed. Buttons link to /book (internal route); the raw short
@@ -625,41 +634,121 @@ export const PARTNERS: readonly Partner[] = [];
    ------------------------------------------------------------------ */
 
 export type Benefit = {
-  /** lucide-react icon key, mapped in the component. */
-  icon: "coffee" | "utensils" | "ticket" | "camera" | "radio" | "megaphone";
+  /** Emoji shown in the benefit's medallion. */
+  emoji: string;
   title: string;
   detail: string;
 };
 
 export const NOMINEE_BENEFITS: readonly Benefit[] = [
   {
-    icon: "coffee",
+    emoji: "🍽️",
     title: "Morning Breakfast",
-    detail: "The day starts with breakfast for every nominee and guest.",
+    detail: "Start your day with a delicious breakfast.",
   },
   {
-    icon: "utensils",
+    emoji: "🍛",
     title: "Lunch & Evening Snacks",
-    detail: "A full lunch and evening snacks, on us, through the day.",
+    detail: "Complimentary lunch and refreshments.",
   },
   {
-    icon: "ticket",
+    emoji: "🎟️",
     title: "Full-Day Event Pass",
-    detail: "Access to the entire programme, from red carpet to close.",
+    detail: "Access to the complete award ceremony.",
   },
   {
-    icon: "camera",
+    emoji: "📸",
     title: "4K Photos & Videos",
-    detail: "Professionally shot 4K photos and video of your moment on stage.",
+    detail: "Professional coverage of your special moments.",
   },
   {
-    icon: "radio",
+    emoji: "📱",
     title: "Live Social Media Coverage",
-    detail: "Your win, shared live across DITRP's social channels.",
+    detail: "Feature on DITRP's official social platforms.",
   },
   {
-    icon: "megaphone",
-    title: "Media Exposure + Networking",
-    detail: "Press coverage and a room full of the network's best to meet.",
+    emoji: "📰",
+    title: "Media Exposure",
+    detail: "Coverage by leading media partners.",
+  },
+  {
+    emoji: "🤝",
+    title: "Networking Opportunity",
+    detail: "Meet institute owners and education leaders.",
+  },
+  {
+    emoji: "🏅",
+    title: "Premium Award Presentation",
+    detail: "Receive your award on the grand stage.",
+  },
+  {
+    emoji: "🎤",
+    title: "Meet Chief Guests",
+    detail: "Interact with renowned industry personalities.",
+  },
+  {
+    emoji: "📺",
+    title: "LED Screen Spotlight",
+    detail: "Your institute showcased on the main event screen.",
+  },
+  {
+    emoji: "🎥",
+    title: "Red Carpet Experience",
+    detail: "Walk the red carpet with professional coverage.",
+  },
+  {
+    emoji: "🌟",
+    title: "Brand Recognition",
+    detail: "Increase your institute's credibility nationwide.",
+  },
+  {
+    emoji: "🎖️",
+    title: "Certificate of Participation",
+    detail: "Official participation certificate.",
+  },
+  {
+    emoji: "🏆",
+    title: "Luxury Trophy",
+    detail: "Premium-quality award trophy.",
+  },
+  {
+    emoji: "🎬",
+    title: "Stage Introduction",
+    detail: "Professional announcement of your institute.",
+  },
+  {
+    emoji: "📢",
+    title: "Institute Promotion",
+    detail: "Brand visibility before and after the event.",
+  },
+  {
+    emoji: "🎙️",
+    title: "Interview Opportunity",
+    detail: "Selected nominees may be interviewed.",
+  },
+  {
+    emoji: "💡",
+    title: "Learning & Inspiration",
+    detail: "Gain insights from successful industry leaders.",
+  },
+  {
+    emoji: "🎊",
+    title: "Group Celebration & Closing Ceremony",
+    detail: "Celebrate achievements with all winners.",
+  },
+  {
+    emoji: "🚀",
+    title: "Future Partnership Opportunities",
+    detail: "Become part of the DITRP education network.",
+  },
+  {
+    emoji: "🎥",
+    title: "Highlight Reel Feature",
+    detail: "Chance to appear in the official event highlights.",
+  },
+  {
+    emoji: "💬",
+    title: "Community Access",
+    detail: "Join an exclusive network of award-winning institutes.",
   },
 ] as const;

@@ -1,41 +1,21 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  Coffee,
-  UtensilsCrossed,
-  Ticket,
-  Camera,
-  Radio,
-  Megaphone,
-  type LucideIcon,
-} from "lucide-react";
 
-import { NOMINEE_BENEFITS, type Benefit, BOOKING_URL } from "@/lib/site";
+import { NOMINEE_BENEFITS, BOOKING_URL } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { CornerFrame, StarRow } from "@/components/ui/Ornaments";
 
 export const metadata: Metadata = {
   title: "Nominee Benefits",
   description:
-    "Everything a nominee at India's Best 100 Institute Award Show 2026 receives — breakfast to media exposure, and a seat in the room in Mumbai.",
+    "Everything a nominee at India's Best 100 Institute Award Show 2026 receives — breakfast to media exposure, a luxury trophy and a seat in the room in Mumbai.",
 };
 
 /**
- * A dedicated, mostly-static page: the benefits list is short enough that it
- * reads best in place, so there is no scroll-reveal here and nothing is tagged
- * `data-reveal` (which, without a reveal scope, would leave it hidden forever
- * under html[data-motion="on"]).
+ * A dedicated, mostly-static page: the benefits read best in place, so there
+ * is no scroll-reveal here and nothing is tagged `data-reveal` (which, without
+ * a reveal scope, would leave it hidden forever under html[data-motion="on"]).
  */
-
-/** Maps each `Benefit.icon` key from site.ts to a lucide icon. */
-const ICONS: Record<Benefit["icon"], LucideIcon> = {
-  coffee: Coffee,
-  utensils: UtensilsCrossed,
-  ticket: Ticket,
-  camera: Camera,
-  radio: Radio,
-  megaphone: Megaphone,
-};
 
 export default function NomineeBenefitsPage() {
   return (
@@ -57,40 +37,36 @@ export default function NomineeBenefitsPage() {
 
           <p className="mt-6 max-w-[56ch] font-body text-[15px] leading-relaxed text-mist sm:text-[16px]">
             A nomination is not just a line on a card. From the moment you arrive
-            in Mumbai, every nominee is looked after — fed, filmed and put in front
-            of the network. Here is everything the day includes.
+            in Mumbai, every nominee is looked after — fed, filmed, put in front
+            of the network and sent home with a trophy. Here is everything the
+            day includes.
           </p>
 
           <StarRow className="mt-8" size={15} />
 
-          {/* Benefits grid */}
-          <ul className="mt-14 grid w-full gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
-            {NOMINEE_BENEFITS.map((benefit) => {
-              const Icon = ICONS[benefit.icon];
-              return (
-                <li
-                  key={benefit.title}
-                  className="panel-gold flex flex-col rounded-[4px] px-6 py-7"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/12 ring-1 ring-gold/30">
-                    <Icon
-                      aria-hidden="true"
-                      size={24}
-                      strokeWidth={1.6}
-                      className="text-gold"
-                    />
-                  </span>
+          {/* Benefits grid — a centred flex wrap so the final lone card sits
+              centred rather than stranded at the left of an empty row. */}
+          <ul className="mt-14 flex w-full flex-wrap justify-center gap-6">
+            {NOMINEE_BENEFITS.map((benefit) => (
+              <li
+                key={benefit.title}
+                className="panel-gold group flex w-full flex-col items-center rounded-[6px] px-6 py-8 text-center transition-transform duration-300 ease-out hover:-translate-y-1 sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+              >
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gold/12 text-[26px] leading-none ring-1 ring-gold/30 transition-colors duration-300 group-hover:ring-gold/60">
+                  <span aria-hidden="true">{benefit.emoji}</span>
+                </span>
 
-                  <h2 className="type-name mt-5 text-[15px] text-cream">
-                    {benefit.title}
-                  </h2>
+                <h2 className="type-name mt-5 text-[15px] text-cream">
+                  {benefit.title}
+                </h2>
 
-                  <p className="mt-2.5 font-body text-[14px] leading-relaxed text-mist">
-                    {benefit.detail}
-                  </p>
-                </li>
-              );
-            })}
+                <span aria-hidden="true" className="rule-gold-thin mt-3 w-8" />
+
+                <p className="mt-3 max-w-[34ch] font-body text-[14px] leading-relaxed text-mist">
+                  {benefit.detail}
+                </p>
+              </li>
+            ))}
           </ul>
 
           {/* Actions */}
