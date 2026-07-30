@@ -174,9 +174,27 @@ export function Faq() {
                   style={{ height: 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="max-w-prose pb-7 pl-10 font-body text-[15px] leading-relaxed text-mist sm:pl-12">
-                    {faq.a}
-                  </p>
+                  <div className="max-w-prose pb-7 pl-10 sm:pl-12">
+                    <p className="font-body text-[15px] leading-relaxed text-mist">
+                      {faq.a}
+                    </p>
+                    {faq.points && (
+                      <ul className="mt-3 flex flex-col gap-2">
+                        {faq.points.map((point) => (
+                          <li
+                            key={point}
+                            className="flex items-start gap-3 font-body text-[15px] leading-relaxed text-mist"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="mt-[0.6em] size-1.5 shrink-0 rotate-45 bg-gold"
+                            />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
               </li>
             );

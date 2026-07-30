@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { MarqueeRibbon } from "@/components/sections/MarqueeRibbon";
 import { About } from "@/components/sections/About";
 import { Teaser } from "@/components/sections/Teaser";
+import { Founder } from "@/components/sections/Founder";
 import { Nominees } from "@/components/sections/Nominees";
 import { Categories } from "@/components/sections/Categories";
 import { StageShowcase } from "@/components/sections/StageShowcase";
@@ -72,7 +73,10 @@ const jsonLd = {
       mainEntity: FAQS.map((faq) => ({
         "@type": "Question",
         name: faq.q,
-        acceptedAnswer: { "@type": "Answer", text: faq.a },
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.points ? `${faq.a} ${faq.points.join("; ")}` : faq.a,
+        },
       })),
     },
   ],
@@ -93,6 +97,7 @@ export default function Home() {
         <MarqueeRibbon />
         <About />
         <Teaser />
+        <Founder />
         <ChiefGuest />
         <Nominees />
         <Categories />

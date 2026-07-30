@@ -7,23 +7,71 @@ import { Button } from "@/components/ui/Button";
 import { PhotoMedallion } from "@/components/ui/PhotoMedallion";
 import { CornerFrame, SparkleField, StarRow } from "@/components/ui/Ornaments";
 
-/** Instagram mark, drawn so it inherits the gold-on-hover text colour. */
-function InstagramGlyph() {
+/** A social glyph, sized and coloured to inherit the button's gold-on-hover. */
+function SocialSvg({ children }: { children: React.ReactNode }) {
   return (
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="size-[18px] text-gold-light transition-colors group-hover/ig:text-gold"
+      className="size-[18px] text-gold-light transition-colors group-hover/soc:text-gold"
       fill="none"
       stroke="currentColor"
       strokeWidth={1.6}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      {children}
+    </svg>
+  );
+}
+
+const GLYPHS = {
+  Instagram: (
+    <SocialSvg>
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" />
-    </svg>
+    </SocialSvg>
+  ),
+  Facebook: (
+    <SocialSvg>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </SocialSvg>
+  ),
+  YouTube: (
+    <SocialSvg>
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+      <path d="m10 15 5-3-5-3z" />
+    </SocialSvg>
+  ),
+} as const;
+
+/** The guest's official channels, as compact gold-ringed icon buttons. */
+function GuestSocials({ guest }: { guest: Guest }) {
+  const links = [
+    { label: "Instagram", href: guest.instagram, glyph: GLYPHS.Instagram },
+    { label: "Facebook", href: guest.facebook, glyph: GLYPHS.Facebook },
+    { label: "YouTube", href: guest.youtube, glyph: GLYPHS.YouTube },
+  ].filter((l) => l.href);
+
+  if (links.length === 0) return null;
+
+  return (
+    <ul className="flex items-center gap-2.5">
+      {links.map((l) => (
+        <li key={l.label}>
+          <a
+            href={l.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${guest.name} on ${l.label} (opens in a new tab)`}
+            className="group/soc flex size-11 items-center justify-center rounded-full border border-gold/40 bg-navy/30 transition-colors hover:border-gold hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          >
+            {l.glyph}
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -67,18 +115,7 @@ function GuestCard({ guest, featured }: { guest: Guest; featured?: boolean }) {
         </p>
 
         <div className="mt-7 flex flex-col items-center gap-4 sm:flex-row md:items-center">
-          {guest.instagram && (
-            <a
-              href={guest.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${guest.name} on Instagram (opens in a new tab)`}
-              className="group/ig inline-flex items-center gap-2.5 rounded-full border border-gold/40 bg-navy/30 px-4 py-2 text-cream transition-colors hover:border-gold hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-            >
-              <InstagramGlyph />
-              <span className="type-name text-[0.7rem]">Follow on Instagram</span>
-            </a>
-          )}
+          <GuestSocials guest={guest} />
           {featured && (
             <Button variant="metal" href={BOOKING_URL}>
               Book your seat

@@ -30,7 +30,14 @@ const COLORS = ["#F1C974", "#F6ECA4", "#FFF4E8", "#1D357F", "#C9833B"];
  * seen rather than happening behind the overlay, and renders nothing at all
  * under reduced motion.
  */
-export function ConfettiBurst({ className }: { className?: string }) {
+export function ConfettiBurst({
+  className,
+  waitForEvent,
+}: {
+  className?: string;
+  /** When set, fire on this window event (once) instead of a load timer. */
+  waitForEvent?: string;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useGSAP(() => {
@@ -140,7 +147,10 @@ export function ConfettiBurst({ className }: { className?: string }) {
       fireTimer = window.setTimeout(start, delay);
     };
 
-    if (doc.dataset.preloader === "on") {
+    if (waitForEvent) {
+      // Held until the hero text reveals on scroll (see Hero's timeline).
+      window.addEventListener(waitForEvent, start, { once: true });
+    } else if (doc.dataset.preloader === "on") {
       observer = new MutationObserver(() => {
         if (doc.dataset.preloader !== "on") {
           observer?.disconnect();
@@ -158,6 +168,7 @@ export function ConfettiBurst({ className }: { className?: string }) {
 
     return () => {
       window.clearTimeout(fireTimer);
+      if (waitForEvent) window.removeEventListener(waitForEvent, start);
       observer?.disconnect();
       window.removeEventListener("resize", onResize);
       stop();

@@ -384,8 +384,10 @@ export type Guest = {
   note: string;
   /** Photo path, or null for a marked placeholder. */
   src: string | null;
-  /** Official Instagram profile URL, opened in a new tab. */
+  /** Official profile URLs, each opened in a new tab. */
   instagram?: string;
+  facebook?: string;
+  youtube?: string;
 };
 
 /**
@@ -400,6 +402,8 @@ export const CHIEF_GUEST_2026: Guest = {
   note: "Founder of Dynamic India Group, one of India's most-watched speakers on business and self-belief — joining the stage in Mumbai to hand the network its honours.",
   src: "/awards/guests/sonu-sharma.jpg",
   instagram: "https://www.instagram.com/officesonusharma/",
+  facebook: "https://www.facebook.com/officesonusharma",
+  youtube: "https://www.youtube.com/channel/UCwrzhaGy4oAHu8clPCVol3g",
 } as const;
 
 /** Chief guests from the previous editions, shown beneath the 2026 guest. */
@@ -411,6 +415,8 @@ export const GUESTS: readonly Guest[] = [
     note: "Took the stage as chief guest at the 2024 edition of the show.",
     src: "/awards/guests/ashneer-grover.jpg",
     instagram: "https://www.instagram.com/ashneer.grover/",
+    facebook: "https://www.facebook.com/ashneer.grover/",
+    youtube: "https://www.youtube.com/channel/UCE4JzawS1V8cMa8G1GCA53g",
   },
   {
     name: "Dr. Vivek Bindra",
@@ -419,8 +425,32 @@ export const GUESTS: readonly Guest[] = [
     note: "Founder & CEO of Bada Business and one of India's best-known business coaches — chief guest at the 2023 edition.",
     src: "/awards/guests/dr-vivek-bindra.jpg",
     instagram: "https://www.instagram.com/vivek_bindra/",
+    facebook: "https://www.facebook.com/DailyMotivationByVivekBindra/",
+    youtube: "https://www.youtube.com/channel/UCR-foyF-C6VuAlwy3KZMkgA",
   },
 ] as const;
+
+/* ------------------------------------------------------------------
+   The founder — the person behind the network and the award show.
+   ------------------------------------------------------------------ */
+
+export const FOUNDER = {
+  eyebrow: "Meet our Founder & Director",
+  firstName: "Mr. Amzad",
+  lastName: "Sathe",
+  role: "Founder & Director",
+  org: "DITRP India",
+  portrait: "/awards/founder-amzad-sathe.jpg",
+  paragraphs: [
+    "Mr. Amzad Sathe is a visionary entrepreneur, education reformer, and the Founder & Director of DITRP India. With a powerful belief that quality education should be accessible to every individual, he has dedicated his life to empowering students, institutes, and educators across the country.",
+    "Despite facing challenges in his early academic journey, Mr. Sathe proved that determination, self-learning, and continuous growth matter more than conventional qualifications. His inspiring journey from a computer trainer to building one of India's fastest-growing education networks reflects his unwavering commitment to transforming lives through skill-based education.",
+    "In 2016, he founded DITRP India with a clear mission — to bridge the gap between education and industry by providing affordable, practical, and career-oriented learning opportunities for everyone. Today, under his leadership, DITRP has empowered thousands of students and partnered with a rapidly expanding network of institutes across India.",
+    "Mr. Sathe's vision goes beyond certifications. He believes in creating confident, skilled, and financially independent individuals who are ready to succeed in the modern world. His leadership continues to inspire educators, entrepreneurs, and students to dream bigger, achieve more, and contribute to a stronger India.",
+  ],
+  quote:
+    "Success is not defined by where you start, but by the courage to keep learning, growing, and never giving up.",
+  quoteBy: "Mr. Amzad Sathe",
+} as const;
 
 /* ------------------------------------------------------------------
    Run of show — {{FINAL_RUN_OF_SHOW}}
@@ -478,30 +508,81 @@ export const AGENDA = [
    FAQ
    ------------------------------------------------------------------ */
 
-export const FAQS = [
+export type Faq = {
+  q: string;
+  a: string;
+  /** Optional bullet points rendered as a list beneath the answer. */
+  points?: readonly string[];
+};
+
+export const FAQS: readonly Faq[] = [
   {
-    q: "Who can be nominated?",
-    a: "Any computer training institute working with DITRP may be nominated, and centre heads may nominate a peer institute. Students and faculty can also submit a nomination for their own centre. Every entry is reviewed before the final 100 are shortlisted.",
+    q: "What is the India's Best 100 Institute Award Show 2026?",
+    a: "It is a prestigious national award ceremony organized by DITRP India to recognize and honor the achievements of outstanding educational institutes across India.",
   },
   {
-    q: "What does the award show recognise?",
-    a: "India's Best 100 Institute Award Show honours the hundred institutes that did the most for their students over the year — placements made, classrooms filled, districts reached — along with the directors and faculty behind them.",
+    q: "When and where will the event be held?",
+    a: "The event will take place on 27th September 2026 in Mumbai, Maharashtra.",
   },
   {
-    q: "What is the dress code?",
-    a: "Formal, or formal Indian wear. It is a ceremony with a red carpet and a great many photographs.",
+    q: "Who can participate in this award show?",
+    a: "All educational institutes, training centers, coaching institutes, computer institutes, skill development centers, and academic organizations are eligible to participate.",
   },
   {
-    q: "How do I get seats?",
-    a: "Seats are reserved rather than sold at the door. Use the booking link on this page to request seats for your institute; confirmations are sent by email.",
+    q: "Who are the Chief Guests?",
+    a: "The event will feature:",
+    points: [
+      "Mr. Sonu Sharma — Motivational Speaker & Business Coach",
+      "Mr. Amzad Sathe — Director, DITRP India",
+    ],
   },
   {
-    q: "Where is the 2026 show being held?",
-    a: `The show is in Mumbai on ${"Sunday, 27 September 2026"}. The venue and travel details will be confirmed on this page closer to the date.`,
+    q: "Who will present the Best Institute Award?",
+    a: "The Best Institute Award will be presented by Mr. Sonu Sharma.",
   },
   {
-    q: "Who do I contact about the awards?",
-    a: `Write to ${EVENT.contactEmail} or call ${EVENT.contactPhone}. You can also reach the DITRP team through ditrpindia.org.`,
+    q: "What are the benefits of participating?",
+    a: "Participants will receive:",
+    points: [
+      "National-level recognition",
+      "Prestigious award and appreciation",
+      "Professional 4K photography & videography",
+      "LIVE social media coverage",
+      "Media exposure through 5+ renowned media houses",
+      "Enhanced institute credibility and brand value",
+      "Excellent marketing and promotional opportunities",
+    ],
+  },
+  {
+    q: "Will my institute receive media coverage?",
+    a: "Yes. The event will be covered by 5+ renowned media houses, and highlights will also be shared on DITRP India's official social media platforms.",
+  },
+  {
+    q: "Will the event be LIVE streamed?",
+    a: "Yes. The complete event will be LIVE streamed on DITRP India's official social media channels.",
+  },
+  {
+    q: "Will participants receive professional photographs and videos?",
+    a: "Yes. Every participant will have access to professional 4K photography and videography during the event.",
+  },
+  {
+    q: "Is this a national-level award?",
+    a: "Yes. The India's Best 100 Institute Award Show is a national platform recognizing excellence in education across India.",
+  },
+  {
+    q: "Why should my institute participate?",
+    a: "Participation helps your institute:",
+    points: [
+      "Build trust and credibility",
+      "Increase brand visibility",
+      "Gain nationwide recognition",
+      "Strengthen marketing efforts",
+      "Showcase achievements before industry leaders",
+    ],
+  },
+  {
+    q: "How can I get more information?",
+    a: `For complete event details, registration, and support, contact the DITRP India team at ${EVENT.contactPhone} or ${EVENT.contactEmail}.`,
   },
 ] as const;
 

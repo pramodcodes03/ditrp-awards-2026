@@ -1,4 +1,4 @@
-/** Auto-generated from public/awards/nominees-2026/. 65 nominee
+/** Auto-generated from public/awards/nominees-2026/. 73 nominee
  *  cards for the 2026 show — the printed poster cards, shown as-is. */
 
 export type NomineeCardImage = { slug: string; name: string; src: string };
@@ -50,6 +50,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/biit-campus-computer-institute.jpg"
   },
   {
+    "slug": "cadd-guru-institute",
+    "name": "CADD GURU INSTITUTE",
+    "src": "/awards/nominees-2026/cadd-guru-institute.jpg"
+  },
+  {
     "slug": "d-p-s-computer-center",
     "name": "D P S COMPUTER CENTER",
     "src": "/awards/nominees-2026/d-p-s-computer-center.jpg"
@@ -80,6 +85,16 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/dotcom-computer-institute.jpg"
   },
   {
+    "slug": "e-vidya",
+    "name": "E VIDYA",
+    "src": "/awards/nominees-2026/e-vidya.jpg"
+  },
+  {
+    "slug": "eklavya-infotech",
+    "name": "EKLAVYA INFOTECH",
+    "src": "/awards/nominees-2026/eklavya-infotech.jpg"
+  },
+  {
     "slug": "excellence-academy-nrs",
     "name": "Excellence Academy NRS",
     "src": "/awards/nominees-2026/excellence-academy-nrs.jpg"
@@ -98,6 +113,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "i-computer-classes",
     "name": "I COMPUTER CLASSES",
     "src": "/awards/nominees-2026/i-computer-classes.jpg"
+  },
+  {
+    "slug": "iitm-computer-education",
+    "name": "IITM COMPUTER EDUCATION",
+    "src": "/awards/nominees-2026/iitm-computer-education.jpg"
   },
   {
     "slug": "infodesk-computer-education",
@@ -150,6 +170,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/khushi-computer.jpg"
   },
   {
+    "slug": "kumawat-academy-computer-institute",
+    "name": "KUMAWAT ACADEMY COMPUTER INSTITUTE",
+    "src": "/awards/nominees-2026/kumawat-academy-computer-institute.jpg"
+  },
+  {
     "slug": "libdex-career-academy",
     "name": "Libdex career academy",
     "src": "/awards/nominees-2026/libdex-career-academy.jpg"
@@ -165,14 +190,14 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/mjs-group-of-institution.jpg"
   },
   {
+    "slug": "mle-corporate-pvt-ltd",
+    "name": "mle corporate pvt Ltd",
+    "src": "/awards/nominees-2026/mle-corporate-pvt-ltd.jpg"
+  },
+  {
     "slug": "modern-computer-academy",
     "name": "MODERN COMPUTER ACADEMY",
     "src": "/awards/nominees-2026/modern-computer-academy.jpg"
-  },
-  {
-    "slug": "noble-institute-of-technology",
-    "name": "NOBLE INSTITUTE OF TECHNOLOGY",
-    "src": "/awards/nominees-2026/noble-institute-of-technology.jpg"
   },
   {
     "slug": "om-computer-education",
@@ -220,6 +245,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/royal-computer-center.jpg"
   },
   {
+    "slug": "rsp-digital-india-training-centre",
+    "name": "RSP DIGITAL INDIA TRAINING CENTRE",
+    "src": "/awards/nominees-2026/rsp-digital-india-training-centre.jpg"
+  },
+  {
     "slug": "s-i-t-m-computer-education",
     "name": "S.I.T.M Computer Education",
     "src": "/awards/nominees-2026/s-i-t-m-computer-education.jpg"
@@ -243,6 +273,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "shivi-computer-institute-2",
     "name": "SHIVI COMPUTER INSTITUTE (2)",
     "src": "/awards/nominees-2026/shivi-computer-institute-2.jpg"
+  },
+  {
+    "slug": "smart-institute-of-computer-learning",
+    "name": "SMART INSTITUTE OF COMPUTER LEARNING",
+    "src": "/awards/nominees-2026/smart-institute-of-computer-learning.jpg"
   },
   {
     "slug": "softpoint-institute-of-technology",
@@ -313,6 +348,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "vedanta-computer-training-institute",
     "name": "Vedanta Computer Training Institute",
     "src": "/awards/nominees-2026/vedanta-computer-training-institute.jpg"
+  },
+  {
+    "slug": "velocis-educationcampus-computer-institute",
+    "name": "VELOCIS EDUCATIONCampus (Computer Institute)",
+    "src": "/awards/nominees-2026/velocis-educationcampus-computer-institute.jpg"
   },
   {
     "slug": "well-vista-technical-institut",
