@@ -153,13 +153,13 @@ export function Nominees() {
           ref={scroller}
           className="no-scrollbar flex gap-5 overflow-x-auto px-[var(--gutter)] pb-3 sm:gap-6"
         >
-          <div ref={trackA} className="flex gap-5 sm:gap-6">
+          <div ref={trackA} className="flex shrink-0 gap-5 sm:gap-6">
             {cards.map((card) => (
               <Card key={card.slug} card={card} />
             ))}
           </div>
           {/* Seamless-loop copy, hidden from assistive tech. */}
-          <div ref={trackB} aria-hidden="true" className="flex gap-5 sm:gap-6">
+          <div ref={trackB} aria-hidden="true" className="flex shrink-0 gap-5 sm:gap-6">
             {cards.map((card) => (
               <Card key={`dup-${card.slug}`} card={card} />
             ))}

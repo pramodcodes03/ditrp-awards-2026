@@ -127,7 +127,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-20 will-change-transform"
       >
         <Image
-          src="/awards/2024/hall-group.jpg"
+          src="/awards/hero-bg.jpg"
           alt=""
           fill
           sizes="100vw"

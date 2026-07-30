@@ -29,17 +29,15 @@ export const EVENT = {
   dateShort: "27 September 2026",
   dateNumeric: "27.09.2026",
 
-  /** {{VENUE_NAME}} — the cards name the city only. */
-  venue: "{{VENUE NAME}}",
+  /** The cards name the city only; the exact hall is confirmed nearer the date. */
+  venue: "Mumbai",
   city: "Mumbai",
-  /** {{VENUE_ADDRESS}} */
-  address: "{{VENUE ADDRESS LINE}}, Mumbai, Maharashtra",
+  address: "Mumbai, Maharashtra, India",
 
-  /** {{NOMINATION_DEADLINE}} */
-  nominationDeadline: "{{31 AUGUST 2026}}",
+  nominationDeadline: "31 August 2026",
 
-  contactEmail: "{{AWARDS@DITRPINDIA.ORG}}",
-  contactPhone: "{{+91 00000 00000}}",
+  contactEmail: "ditrpindia@gmail.com",
+  contactPhone: "+91 84129 40001",
   website: "https://ditrpindia.org",
 } as const;
 
@@ -386,6 +384,8 @@ export type Guest = {
   note: string;
   /** Photo path, or null for a marked placeholder. */
   src: string | null;
+  /** Official Instagram profile URL, opened in a new tab. */
+  instagram?: string;
 };
 
 /**
@@ -399,6 +399,7 @@ export const CHIEF_GUEST_2026: Guest = {
   editionLabel: "Chief Guest · 2026",
   note: "Founder of Dynamic India Group, one of India's most-watched speakers on business and self-belief — joining the stage in Mumbai to hand the network its honours.",
   src: "/awards/guests/sonu-sharma.jpg",
+  instagram: "https://www.instagram.com/officesonusharma/",
 } as const;
 
 /** Chief guests from the previous editions, shown beneath the 2026 guest. */
@@ -409,6 +410,7 @@ export const GUESTS: readonly Guest[] = [
     editionLabel: "Chief Guest · 2024",
     note: "Took the stage as chief guest at the 2024 edition of the show.",
     src: "/awards/guests/ashneer-grover.jpg",
+    instagram: "https://www.instagram.com/ashneer.grover/",
   },
   {
     name: "Dr. Vivek Bindra",
@@ -416,6 +418,7 @@ export const GUESTS: readonly Guest[] = [
     editionLabel: "Chief Guest · 2023",
     note: "Founder & CEO of Bada Business and one of India's best-known business coaches — chief guest at the 2023 edition.",
     src: "/awards/guests/dr-vivek-bindra.jpg",
+    instagram: "https://www.instagram.com/vivek_bindra/",
   },
 ] as const;
 
@@ -531,14 +534,10 @@ export type Partner = {
   logo: string | null;
 };
 
-export const PARTNERS: readonly Partner[] = [
-  { name: "{{TITLE SPONSOR}}", tier: "Title Sponsor", logo: null },
-  { name: "{{POWERED BY}}", tier: "Powered by", logo: null },
-  { name: "{{KNOWLEDGE PARTNER}}", tier: "Knowledge Partner", logo: null },
-  { name: "{{MEDIA PARTNER}}", tier: "Media Partner", logo: null },
-  { name: "{{HOSPITALITY PARTNER}}", tier: "Hospitality Partner", logo: null },
-  { name: "{{TECH PARTNER}}", tier: "Tech Partner", logo: null },
-] as const;
+// Partners are announced closer to the date; the section is not shown until
+// real sponsors are confirmed. Add entries here (with a logo under
+// /awards/partners/) to bring the Partners section back.
+export const PARTNERS: readonly Partner[] = [];
 
 /* ------------------------------------------------------------------
    Nominee benefits — shown on the dedicated /nominee-benefits page.

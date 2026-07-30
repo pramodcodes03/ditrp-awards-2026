@@ -47,11 +47,11 @@ function SocialIcon({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** One placeholder per platform — replace all four with the real handles. */
+/** DITRP's official channels. */
 const SOCIALS = [
   {
     label: "Instagram",
-    href: "{{INSTAGRAM_URL}}",
+    href: "https://www.instagram.com/ditrp_india/",
     icon: (
       <SocialIcon>
         <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -61,19 +61,8 @@ const SOCIALS = [
     ),
   },
   {
-    label: "LinkedIn",
-    href: "{{LINKEDIN_URL}}",
-    icon: (
-      <SocialIcon>
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-        <rect x="2" y="9" width="4" height="12" />
-        <circle cx="4" cy="4" r="2" />
-      </SocialIcon>
-    ),
-  },
-  {
     label: "YouTube",
-    href: "{{YOUTUBE_URL}}",
+    href: "https://www.youtube.com/channel/UCZ1-20Gm82_NL2Z305LeS2Q",
     icon: (
       <SocialIcon>
         <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
@@ -83,7 +72,7 @@ const SOCIALS = [
   },
   {
     label: "Facebook",
-    href: "{{FACEBOOK_URL}}",
+    href: "https://www.facebook.com/ditrp.india.54/",
     icon: (
       <SocialIcon>
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />

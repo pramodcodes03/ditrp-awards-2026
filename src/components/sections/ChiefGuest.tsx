@@ -7,6 +7,26 @@ import { Button } from "@/components/ui/Button";
 import { PhotoMedallion } from "@/components/ui/PhotoMedallion";
 import { CornerFrame, SparkleField, StarRow } from "@/components/ui/Ornaments";
 
+/** Instagram mark, drawn so it inherits the gold-on-hover text colour. */
+function InstagramGlyph() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="size-[18px] text-gold-light transition-colors group-hover/ig:text-gold"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 /**
  * The one guest card used for every guest — the featured design applied to all,
  * so 2026, 2024 and 2023 read as the same honour at the same scale. Only the
@@ -45,13 +65,26 @@ function GuestCard({ guest, featured }: { guest: Guest; featured?: boolean }) {
         <p className="max-w-[46ch] text-[15px] leading-relaxed text-mist">
           {guest.note}
         </p>
-        {featured && (
-          <div className="mt-8">
+
+        <div className="mt-7 flex flex-col items-center gap-4 sm:flex-row md:items-center">
+          {guest.instagram && (
+            <a
+              href={guest.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${guest.name} on Instagram (opens in a new tab)`}
+              className="group/ig inline-flex items-center gap-2.5 rounded-full border border-gold/40 bg-navy/30 px-4 py-2 text-cream transition-colors hover:border-gold hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            >
+              <InstagramGlyph />
+              <span className="type-name text-[0.7rem]">Follow on Instagram</span>
+            </a>
+          )}
+          {featured && (
             <Button variant="metal" href={BOOKING_URL}>
               Book your seat
             </Button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
