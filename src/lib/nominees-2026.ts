@@ -1,4 +1,4 @@
-/** Auto-generated from public/awards/nominees-2026/. 73 nominee
+/** Auto-generated from public/awards/nominees-2026/. 75 nominee
  *  cards for the 2026 show — the printed poster cards, shown as-is. */
 
 export type NomineeCardImage = { slug: string; name: string; src: string };
@@ -200,6 +200,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/modern-computer-academy.jpg"
   },
   {
+    "slug": "nitya-skill-development-centre",
+    "name": "NITYA SKILL DEVELOPMENT CENTRE",
+    "src": "/awards/nominees-2026/nitya-skill-development-centre.jpg"
+  },
+  {
     "slug": "om-computer-education",
     "name": "OM COMPUTER EDUCATION",
     "src": "/awards/nominees-2026/om-computer-education.jpg"
@@ -273,6 +278,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "shivi-computer-institute-2",
     "name": "SHIVI COMPUTER INSTITUTE (2)",
     "src": "/awards/nominees-2026/shivi-computer-institute-2.jpg"
+  },
+  {
+    "slug": "sk-dange-educational-development-center",
+    "name": "SK DANGE EDUCATIONAL DEVELOPMENT CENTER",
+    "src": "/awards/nominees-2026/sk-dange-educational-development-center.jpg"
   },
   {
     "slug": "smart-institute-of-computer-learning",
