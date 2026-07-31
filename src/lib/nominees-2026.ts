@@ -1,4 +1,4 @@
-/** Auto-generated from public/awards/nominees-2026/. 75 nominee
+/** Auto-generated from public/awards/nominees-2026/. 82 nominee
  *  cards for the 2026 show — the printed poster cards, shown as-is. */
 
 export type NomineeCardImage = { slug: string; name: string; src: string };
@@ -50,9 +50,19 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/biit-campus-computer-institute.jpg"
   },
   {
+    "slug": "byte-institute",
+    "name": "BYTE INSTITUTE",
+    "src": "/awards/nominees-2026/byte-institute.jpg"
+  },
+  {
     "slug": "cadd-guru-institute",
     "name": "CADD GURU INSTITUTE",
     "src": "/awards/nominees-2026/cadd-guru-institute.jpg"
+  },
+  {
+    "slug": "climax-computer-amba",
+    "name": "CLIMAX COMPUTER AMBA",
+    "src": "/awards/nominees-2026/climax-computer-amba.jpg"
   },
   {
     "slug": "d-p-s-computer-center",
@@ -98,6 +108,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "excellence-academy-nrs",
     "name": "Excellence Academy NRS",
     "src": "/awards/nominees-2026/excellence-academy-nrs.jpg"
+  },
+  {
+    "slug": "excellent-computer-and-education-center",
+    "name": "Excellent Computer And Education Center",
+    "src": "/awards/nominees-2026/excellent-computer-and-education-center.jpg"
   },
   {
     "slug": "gyankunj-computer-academy",
@@ -170,6 +185,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/khushi-computer.jpg"
   },
   {
+    "slug": "krushna-computer-maintenance-ghatanji",
+    "name": "Krushna Computer Maintenance Ghatanji",
+    "src": "/awards/nominees-2026/krushna-computer-maintenance-ghatanji.jpg"
+  },
+  {
     "slug": "kumawat-academy-computer-institute",
     "name": "KUMAWAT ACADEMY COMPUTER INSTITUTE",
     "src": "/awards/nominees-2026/kumawat-academy-computer-institute.jpg"
@@ -208,6 +228,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "om-computer-education",
     "name": "OM COMPUTER EDUCATION",
     "src": "/awards/nominees-2026/om-computer-education.jpg"
+  },
+  {
+    "slug": "om-kirshna-computer",
+    "name": "OM KIRSHNA COMPUTER",
+    "src": "/awards/nominees-2026/om-kirshna-computer.jpg"
   },
   {
     "slug": "p-k-computer-training-centre",
@@ -260,6 +285,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/s-i-t-m-computer-education.jpg"
   },
   {
+    "slug": "sai-tech-institute-of-computer-academy",
+    "name": "SAI-TECH INSTITUTE OF COMPUTER ACADEMY",
+    "src": "/awards/nominees-2026/sai-tech-institute-of-computer-academy.jpg"
+  },
+  {
     "slug": "santipur-institute-of-computer-education",
     "name": "SANTIPUR INSTITUTE OF COMPUTER EDUCATION",
     "src": "/awards/nominees-2026/santipur-institute-of-computer-education.jpg"
@@ -278,6 +308,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "shivi-computer-institute-2",
     "name": "SHIVI COMPUTER INSTITUTE (2)",
     "src": "/awards/nominees-2026/shivi-computer-institute-2.jpg"
+  },
+  {
+    "slug": "shree-vishwaradhya-infotech-kembhavi",
+    "name": "SHREE VISHWARADHYA INFOTECH KEMBHAVI",
+    "src": "/awards/nominees-2026/shree-vishwaradhya-infotech-kembhavi.jpg"
   },
   {
     "slug": "sk-dange-educational-development-center",

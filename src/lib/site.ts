@@ -34,7 +34,7 @@ export const EVENT = {
   city: "Mumbai",
   address: "Mumbai, Maharashtra, India",
 
-  nominationDeadline: "31 August 2026",
+  nominationDeadline: "5 August 2026",
 
   contactEmail: "ditrpindia@gmail.com",
   contactPhone: "+91 84129 40001",
