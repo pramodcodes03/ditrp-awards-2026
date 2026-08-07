@@ -53,7 +53,7 @@ export function Venue() {
           className="panel-gold mt-10 max-w-[46ch] rounded-[4px] px-6 py-5 sm:px-9 sm:py-6"
         >
           <p className="type-eyebrow text-[10px] text-gold-light/90">
-            Venue &mdash; to be confirmed
+            The venue
           </p>
           <p className="type-name mt-3 text-[clamp(0.8rem,1.9vw,1rem)] text-cream">
             {EVENT.venue}
@@ -83,7 +83,7 @@ export function Venue() {
             className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-navy/70 to-transparent"
           />
           <p className="type-eyebrow absolute bottom-4 left-4 rounded-full border border-gold/35 bg-navy/70 px-3 py-1.5 text-[10px] text-gold-light backdrop-blur-sm sm:bottom-6 sm:left-6 sm:text-[11px]">
-            {EVENT.city} · Venue to be confirmed
+            {EVENT.city} · {EVENT.venue}
           </p>
         </div>
       </div>

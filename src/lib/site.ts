@@ -29,10 +29,10 @@ export const EVENT = {
   dateShort: "27 September 2026",
   dateNumeric: "27.09.2026",
 
-  /** The cards name the city only; the exact hall is confirmed nearer the date. */
-  venue: "Mumbai",
+  venue: "Kohinoor Continental",
   city: "Mumbai",
-  address: "Mumbai, Maharashtra, India",
+  address:
+    "Andheri–Kurla Road, J B Nagar, Andheri East, Mumbai, Maharashtra 400059",
 
   nominationDeadline: "5 August 2026",
 
@@ -80,8 +80,8 @@ export const BOOKING_FORM_LINK = "https://forms.gle/kexp9vv2wCZCVCV89";
 /** The embeddable Google Form URL used in the /book page iframe. */
 export const BOOKING_FORM_EMBED =
   "https://docs.google.com/forms/d/e/1FAIpQLSfQnsvajQ0u7ytcWK3JyHS3QaNfGm7LX0pNAp1J8w1on9Bh3A/viewform?embedded=true";
-/** {{GOOGLE_MAPS_DIRECTIONS_URL}} */
-export const DIRECTIONS_URL = "#venue";
+/** Google Maps link to Kohinoor Continental, Andheri East. */
+export const DIRECTIONS_URL = "https://share.google/YwX1sNCcl1alXMI3f";
 
 /** Internal routes. */
 export const ROUTES = {
@@ -531,7 +531,7 @@ export const FAQS: readonly Faq[] = [
   },
   {
     q: "When and where will the event be held?",
-    a: "The event will take place on 27th September 2026 in Mumbai, Maharashtra.",
+    a: "The event will take place on 27th September 2026 at Kohinoor Continental, Andheri East, Mumbai, Maharashtra.",
   },
   {
     q: "Who can participate in this award show?",
