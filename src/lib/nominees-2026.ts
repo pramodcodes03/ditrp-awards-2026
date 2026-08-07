@@ -1,4 +1,4 @@
-/** Auto-generated from public/awards/nominees-2026/. 82 nominee
+/** Auto-generated from public/awards/nominees-2026/. 96 nominee
  *  cards for the 2026 show — the printed poster cards, shown as-is. */
 
 export type NomineeCardImage = { slug: string; name: string; src: string };
@@ -8,6 +8,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "aarav-computer-education-center",
     "name": "Aarav Computer Education Center",
     "src": "/awards/nominees-2026/aarav-computer-education-center.jpg"
+  },
+  {
+    "slug": "aarush-computer-skill-center",
+    "name": "Aarush Computer Skill Center",
+    "src": "/awards/nominees-2026/aarush-computer-skill-center.jpg"
   },
   {
     "slug": "aashish-computer-training-point",
@@ -23,6 +28,16 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "ait-group-of-education",
     "name": "AIT GROUP OF EDUCATION",
     "src": "/awards/nominees-2026/ait-group-of-education.jpg"
+  },
+  {
+    "slug": "alif-academy",
+    "name": "ALIF ACADEMY",
+    "src": "/awards/nominees-2026/alif-academy.jpg"
+  },
+  {
+    "slug": "amosoft-techworld-pvt-ltd",
+    "name": "AMOSOFT TECHWORLD PVT LTD",
+    "src": "/awards/nominees-2026/amosoft-techworld-pvt-ltd.jpg"
   },
   {
     "slug": "anant-hi-tech-education-pvt-ltd",
@@ -80,6 +95,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/dev-computer-education-center-bemetara-and-simga.jpg"
   },
   {
+    "slug": "dewas-typing-instituteedutech-pvt-ltd",
+    "name": "DEWAS TYPING INSTITUTEEDUTECH PVT LTD",
+    "src": "/awards/nominees-2026/dewas-typing-instituteedutech-pvt-ltd.jpg"
+  },
+  {
     "slug": "digital-computer-centre",
     "name": "Digital Computer Centre",
     "src": "/awards/nominees-2026/digital-computer-centre.jpg"
@@ -115,9 +135,29 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/excellent-computer-and-education-center.jpg"
   },
   {
+    "slug": "expert-computer-education",
+    "name": "Expert Computer Education",
+    "src": "/awards/nominees-2026/expert-computer-education.jpg"
+  },
+  {
+    "slug": "global-academy-dit",
+    "name": "GLOBAL ACADEMY DIT",
+    "src": "/awards/nominees-2026/global-academy-dit.jpg"
+  },
+  {
     "slug": "gyankunj-computer-academy",
     "name": "Gyankunj computer academy",
     "src": "/awards/nominees-2026/gyankunj-computer-academy.jpg"
+  },
+  {
+    "slug": "hacktech-media-enterrpise",
+    "name": "Hacktech Media Enterrpise",
+    "src": "/awards/nominees-2026/hacktech-media-enterrpise.jpg"
+  },
+  {
+    "slug": "hi-tech-computers-infocity",
+    "name": "HI-TECH COMPUTERS INFOCITY",
+    "src": "/awards/nominees-2026/hi-tech-computers-infocity.jpg"
   },
   {
     "slug": "hrd-computer-education-institute",
@@ -180,6 +220,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/jay-infotech.jpg"
   },
   {
+    "slug": "jps-edutech-pvt-ltd",
+    "name": "JPS EDUTECH PVT LTD",
+    "src": "/awards/nominees-2026/jps-edutech-pvt-ltd.jpg"
+  },
+  {
     "slug": "khushi-computer",
     "name": "KHUSHI COMPUTER",
     "src": "/awards/nominees-2026/khushi-computer.jpg"
@@ -218,6 +263,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "modern-computer-academy",
     "name": "MODERN COMPUTER ACADEMY",
     "src": "/awards/nominees-2026/modern-computer-academy.jpg"
+  },
+  {
+    "slug": "modern-computer-education",
+    "name": "MODERN COMPUTER EDUCATION",
+    "src": "/awards/nominees-2026/modern-computer-education.jpg"
   },
   {
     "slug": "nitya-skill-development-centre",
@@ -315,9 +365,19 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "src": "/awards/nominees-2026/shree-vishwaradhya-infotech-kembhavi.jpg"
   },
   {
+    "slug": "shri-shri-computer-institute-and-coaching-classes",
+    "name": "Shri Shri Computer Institute and Coaching Classes",
+    "src": "/awards/nominees-2026/shri-shri-computer-institute-and-coaching-classes.jpg"
+  },
+  {
     "slug": "sk-dange-educational-development-center",
     "name": "SK DANGE EDUCATIONAL DEVELOPMENT CENTER",
     "src": "/awards/nominees-2026/sk-dange-educational-development-center.jpg"
+  },
+  {
+    "slug": "skynet-computers-shaktifarm",
+    "name": "SKYNET COMPUTERS SHAKTIFARM",
+    "src": "/awards/nominees-2026/skynet-computers-shaktifarm.jpg"
   },
   {
     "slug": "smart-institute-of-computer-learning",
@@ -338,6 +398,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "students-elementary-training-institute",
     "name": "STUDENT'S ELEMENTARY TRAINING INSTITUTE",
     "src": "/awards/nominees-2026/students-elementary-training-institute.jpg"
+  },
+  {
+    "slug": "sunrise-computer-institute",
+    "name": "Sunrise computer institute",
+    "src": "/awards/nominees-2026/sunrise-computer-institute.jpg"
   },
   {
     "slug": "svh-institute-and-it-management",
@@ -388,6 +453,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "unique-computer-institute",
     "name": "Unique Computer Institute",
     "src": "/awards/nominees-2026/unique-computer-institute.jpg"
+  },
+  {
+    "slug": "vats-institute-of-engineering-and-information-technology-pvt-ltd",
+    "name": "vats institute of engineering and information technology pvt ltd",
+    "src": "/awards/nominees-2026/vats-institute-of-engineering-and-information-technology-pvt-ltd.jpg"
   },
   {
     "slug": "vedanta-computer-training-institute",
