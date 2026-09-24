@@ -1,4 +1,4 @@
-/** Auto-generated from public/awards/nominees-2026/. 96 nominee
+/** Auto-generated from public/awards/nominees-2026/. 98 nominee
  *  cards for the 2026 show — the printed poster cards, shown as-is. */
 
 export type NomineeCardImage = { slug: string; name: string; src: string };
@@ -73,6 +73,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "cadd-guru-institute",
     "name": "CADD GURU INSTITUTE",
     "src": "/awards/nominees-2026/cadd-guru-institute.jpg"
+  },
+  {
+    "slug": "career-mission-computer-academy",
+    "name": "CAREER MISSION COMPUTER ACADEMY",
+    "src": "/awards/nominees-2026/career-mission-computer-academy.jpg"
   },
   {
     "slug": "climax-computer-amba",
@@ -268,6 +273,11 @@ export const NOMINEE_CARDS: readonly NomineeCardImage[] = [
     "slug": "modern-computer-education",
     "name": "MODERN COMPUTER EDUCATION",
     "src": "/awards/nominees-2026/modern-computer-education.jpg"
+  },
+  {
+    "slug": "nagnechi-computer-education-center",
+    "name": "NAGNECHI COMPUTER EDUCATION CENTER",
+    "src": "/awards/nominees-2026/nagnechi-computer-education-center.jpg"
   },
   {
     "slug": "nitya-skill-development-centre",
